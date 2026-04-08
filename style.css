@@ -4,12 +4,12 @@ Theme URI: https://github.com/
 Description: Optimized child theme for wp-theme with ACF Pro controls and brand overrides.
 Author: WP Raivis
 Author URI: https://digitalpulse.click
-Template: wp-theme
+Template: wp-bbtheme
 Requires at least: 6.6
 Tested up to: 6.8.1
 Requires PHP: 8.0
 Version: 1.3.0
-Text Domain: wp-theme-child
+Text Domain: wp-bbtheme-child
 */
 
 :root {
