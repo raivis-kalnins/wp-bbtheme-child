@@ -1,2 +1,3 @@
-# wp-bbtheme-child
-WordPress Theme - base child
+# wp-theme-child
+
+Optimized child theme for wp-theme with ACF Pro options and brand overrides.

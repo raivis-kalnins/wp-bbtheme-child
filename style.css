@@ -1,0 +1,20 @@
+/*
+Theme Name: WordPress Child Theme
+Theme URI: https://github.com/
+Description: Optimized child theme for wp-theme with ACF Pro controls and brand overrides.
+Author: WP Raivis
+Author URI: https://digitalpulse.click
+Template: wp-theme
+Requires at least: 6.6
+Tested up to: 6.8.1
+Requires PHP: 8.0
+Version: 1.3.0
+Text Domain: wp-theme-child
+*/
+
+:root {
+  --wp-theme-child-brand: #1d4ed8;
+  --wp-theme-child-accent: #0f172a;
+  --wp-theme-child-surface: #f8fafc;
+}
+body { accent-color: var(--wp-theme-child-brand); }
