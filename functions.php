@@ -22,15 +22,6 @@ function wp_theme_child_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'wp_theme_child_enqueue_assets', 30);
 
-function wp_theme_child_login_logo() {
-    $logo = get_stylesheet_directory() . '/assets/img/logo-child.png';
-    if (!file_exists($logo)) {
-        return;
-    }
-    echo '<style>#login h1 a,.login h1 a{background:url(' . esc_url(get_stylesheet_directory_uri() . '/assets/img/logo-child.png') . ') center/contain no-repeat !important;width:280px;height:90px;}</style>';
-}
-add_action('login_enqueue_scripts', 'wp_theme_child_login_logo', 10);
-
 function wp_theme_child_acf_value($key, $default = '') {
     if (!function_exists('get_field')) {
         return $default;
