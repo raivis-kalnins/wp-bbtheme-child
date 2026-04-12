@@ -1,0 +1,17 @@
+{
+  "src/js/main.js": {
+    "file": "assets/script-yTvOq2TV.js",
+    "name": "script",
+    "src": "src/js/main.js",
+    "isEntry": true
+  },
+  "src/scss/public.scss": {
+    "file": "assets/style-DBCOPqdw.css",
+    "src": "src/scss/public.scss",
+    "isEntry": true,
+    "name": "style",
+    "names": [
+      "style.css"
+    ]
+  }
+}
