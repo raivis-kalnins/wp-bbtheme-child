@@ -18,19 +18,3 @@ Text Domain: wp-bbtheme-child
   --wp-theme-child-surface: #f8fafc;
 }
 body { accent-color: var(--wp-theme-child-brand); }
-
-
-
-/* Final polish pass child overrides */
-:root{
-  --wp-theme-primary:#2563eb;
-  --wp-theme-radius:18px;
-}
-.wp-theme-header-nav .menu-item>a,
-.wp-theme-header-nav .nav-link,
-.wp-theme-header-extra,
-.wp-theme-header-cta{min-height:44px}
-.wp-theme-demo-homepage .btn + .btn{margin-left:.5rem}
-.wp-theme-footer-dark{background:#0f172a;color:#e5e7eb}
-body.wp-theme-dark-mode .wp-theme-footer-dark,
-body.wp-theme-dark-mode .wp-theme-site-header{color:#e5e7eb}

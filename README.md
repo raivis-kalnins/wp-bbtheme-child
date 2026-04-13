@@ -7,11 +7,12 @@ Optimized child theme for wp-theme with ACF Pro options and brand overrides.
 - Demo import now creates a Booking page.
 - Booking requests are stored in admin and shown in Theme Settings > Booking Dashboard.
 
-## Final polish pass
-This child theme keeps overrides intentionally light so the parent theme remains stable.
 
-Included in this package:
-- updated screenshot
-- small visual polish overrides
-- safer header/footer presentation
-- install-ready root folder with `style.css`
+## Parent theme compatibility
+
+This child theme is intended to sit on top of the parent theme with:
+
+- Theme Settings under Settings -> Theme Settings
+- optional performance/cache controls
+- improved header/menu/dark-mode behavior
+- enhanced search results and AJAX search suggestions
