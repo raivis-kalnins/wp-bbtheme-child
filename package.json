@@ -1,14 +1,15 @@
 {
-  "name": "wp-theme-child",
+  "name": "vite-project",
   "private": true,
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node -e \"console.log('Prebuilt assets are included. No local build step is required.')\"",
-    "prod": "node -e \"console.log('Prebuilt assets are included. No local build step is required.')\"",
-    "preview": "node -e \"console.log('Prebuilt assets are included. No preview server is configured.')\""
+    "dev": "vite build --watch",
+    "prod": "vite build",
+    "preview": "vite preview"
   },
-  "devDependencies": {},
-  "packageManager": "yarn@1.22.22"
+  "devDependencies": {
+    "sass": "^1.93.2",
+    "vite": "^7.2.2"
+  }
 }
