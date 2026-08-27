@@ -1,3 +1,7 @@
+import './components/_scroll';
+import './components/_swiper';
+import './components/_custom';
+
 // Custom JS Child Theme
 document.addEventListener("DOMContentLoaded", function() {
 	if (typeof window.jQuery === "undefined") {

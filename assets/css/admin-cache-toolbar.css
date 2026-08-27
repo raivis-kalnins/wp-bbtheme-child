@@ -1,0 +1,80 @@
+#wpadminbar #wp-admin-bar-wp-theme-cache > .ab-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache .wp-theme-cache-toolbar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 32px;
+  padding: 0;
+  line-height: 1;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache .wp-theme-cache-toolbar-icon::before {
+  top: auto;
+  line-height: 1;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache.is-cleaning .wp-theme-cache-toolbar-icon,
+.wp-theme-clean-cache-button.is-cleaning .wp-theme-cache-button-icon {
+  animation: wp-theme-cache-spin 0.75s linear infinite;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache.is-clean > .ab-item {
+  color: #7ad03a;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache.is-clean .wp-theme-cache-toolbar-icon,
+.wp-theme-clean-cache-button.is-clean .wp-theme-cache-button-icon {
+  animation: wp-theme-cache-success 0.55s ease both;
+}
+
+#wpadminbar #wp-admin-bar-wp-theme-cache.is-error > .ab-item {
+  color: #ffb900;
+}
+
+.wp-theme-clean-cache-button {
+  display: inline-flex !important;
+  gap: 5px;
+}
+
+.wp-theme-clean-cache-button .wp-theme-cache-button-icon {
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.wp-theme-clean-cache-button.is-clean {
+  border-color: #46b450;
+  color: #2b7a31;
+}
+
+.wp-theme-clean-cache-button.is-error {
+  border-color: #d63638;
+  color: #b32d2e;
+}
+
+@keyframes wp-theme-cache-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wp-theme-cache-success {
+  0% { transform: scale(0.65); opacity: 0.4; }
+  65% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #wpadminbar #wp-admin-bar-wp-theme-cache.is-cleaning .wp-theme-cache-toolbar-icon,
+  #wpadminbar #wp-admin-bar-wp-theme-cache.is-clean .wp-theme-cache-toolbar-icon,
+  .wp-theme-clean-cache-button.is-cleaning .wp-theme-cache-button-icon,
+  .wp-theme-clean-cache-button.is-clean .wp-theme-cache-button-icon {
+    animation: none;
+  }
+}
