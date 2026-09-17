@@ -1,0 +1,31 @@
+@use "sass:math";
+
+@function strip-units($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function to-px-number($value) {
+  $unit: unit($value);
+  @if $unit == "rem" or $unit == "em" {
+    @return strip-units($value) * 16;
+  }
+  @return strip-units($value);
+}
+
+/// Fluid type without min/max helper functions. The middle range is a simple px + vw equation,
+/// bounded by explicit min/max viewport media queries.
+@mixin fluid-font($min, $max, $min-vw: 360px, $max-vw: 1720px, $fallback: false) {
+  $min-px: to-px-number($min);
+  $max-px: to-px-number($max);
+  $min-vw-number: strip-units($min-vw);
+  $max-vw-number: strip-units($max-vw);
+  $slope: math.div(($max-px - $min-px) * 100, ($max-vw-number - $min-vw-number));
+  $intercept: $min-px - math.div($slope * $min-vw-number, 100);
+
+  @if $fallback { font-size: $fallback; }
+  @else { font-size: $max; }
+  font-size: calc(#{$intercept}px + #{$slope}vw);
+
+  @media screen and (max-width: $min-vw) { font-size: $min; }
+  @media screen and (min-width: $max-vw) { font-size: $max; }
+}

@@ -1,0 +1,116 @@
+@use 'tokens' as *;
+@use 'tools' as *;
+ .wp-theme-site-footer {
+  margin-top:0;
+  background:$dark;
+  color:#d8e0ea
+}
+.wp-theme-footer-newsletter-band {
+  padding:58px 0;
+  border-bottom:1px solid rgba(255,255,255,.11)
+}
+.wp-theme-footer-newsletter {
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(400px,1.1fr);
+  align-items:center;
+  gap:70px
+}
+.wp-theme-footer-newsletter h3 {
+  margin-bottom:9px;
+  color:#fff;
+  @include fluid-font(24px,30px)
+}
+.wp-theme-footer-newsletter p {
+  margin:0;
+  color:#9eacbd
+}
+.wp-theme-footer-newsletter form {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:8px
+}
+.wp-theme-footer-newsletter input[type=email],.wp-theme-footer-newsletter input[type=text] {
+  height:50px;
+  min-width:0;
+  padding:0 15px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:9px;
+  background:rgba(255,255,255,.05);
+  color:#fff
+}
+.wp-theme-footer-newsletter button,.wp-theme-footer-newsletter input[type=submit] {
+  height:50px;
+  padding:0 19px;
+  border:0;
+  border-radius:9px;
+  background:$primary;
+  color:#fff;
+  font-weight:800
+}
+.wp-theme-footer-main {
+  padding:70px 0
+}
+.wp-theme-footer-brand {
+  color:#fff
+}
+.wp-theme-footer-brand .wp-theme-site-logo__text {
+  color:#fff
+}
+.wp-theme-footer-intro {
+  max-width:360px;
+  margin-top:20px;
+  color:#9eacbd
+}
+.wp-theme-footer-heading {
+  margin-bottom:18px;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase
+}
+.wp-theme-footer-menu {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px 22px
+}
+.wp-theme-footer-menu a,.wp-theme-footer-contact a {
+  color:#d8e0ea;
+  text-decoration:none
+}
+.wp-theme-footer-menu a:hover,.wp-theme-footer-contact a:hover {
+  color:#fff
+}
+.wp-theme-footer-menu .sub-menu {
+  display:none
+}
+.wp-theme-footer-contact {
+  display:grid;
+  gap:12px
+}
+.wp-theme-footer-contact .wp-theme-language-switcher__menu {
+  position:static;
+  width:100%;
+  margin-top:8px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:none
+}
+.wp-theme-footer-contact .wp-theme-language-switcher__toggle {
+  display:none
+}
+.wp-theme-footer-contact .wp-theme-language-switcher__menu a {
+  color:#d8e0ea
+}
+.wp-theme-footer-bottom {
+  padding:19px 0;
+  border-top:1px solid rgba(255,255,255,.11);
+  color:#8290a2;
+  font-size:12px
+}
+.wp-theme-footer-bottom__inner {
+  display:flex;
+  justify-content:space-between;
+  gap:20px
+}

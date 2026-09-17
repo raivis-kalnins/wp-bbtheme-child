@@ -3,20 +3,58 @@
   "version": 3,
   "settings": {
     "appearanceTools": true,
-    "layout": { "contentSize": "840px", "wideSize": "1240px" },
+    "layout": {
+      "contentSize": "880px",
+      "wideSize": "1280px"
+    },
     "color": {
       "palette": [
-        { "slug": "charcoal", "name": "Charcoal", "color": "#1f2937" },
-        { "slug": "slate", "name": "Slate", "color": "#475569" },
-        { "slug": "mist", "name": "Mist", "color": "#f4f4f5" },
-        { "slug": "white", "name": "White", "color": "#ffffff" }
+        {
+          "slug": "charcoal",
+          "name": "Charcoal",
+          "color": "#20262d"
+        },
+        {
+          "slug": "slate",
+          "name": "Slate",
+          "color": "#4b5563"
+        },
+        {
+          "slug": "mist",
+          "name": "Mist",
+          "color": "#f3f4f5"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#ffffff"
+        }
       ]
     },
-    "spacing": { "units": ["px", "rem", "%", "vw"] },
-    "typography": { "fluid": true }
+    "spacing": {
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vw"
+      ]
+    },
+    "typography": {
+      "fluid": false
+    }
   },
   "styles": {
-    "typography": { "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", "lineHeight": "1.6" },
-    "elements": { "heading": { "typography": { "fontWeight": "750", "lineHeight": "1.1" } } }
+    "typography": {
+      "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontWeight": "750",
+          "lineHeight": "1.1"
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,33 @@
+@use 'tokens' as *;
+ .motion-fade-up,.motion-scale-in,.wp-theme-sector-card,.medicine-speciality-card,.medicine-doctor-card {
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.75,.25,1)
+}
+.motion-pending.motion-fade-up,.motion-pending.wp-theme-sector-card,.motion-pending.medicine-speciality-card,.motion-pending.medicine-doctor-card {
+  opacity:0;
+  transform:translateY(22px)
+}
+.motion-pending.motion-scale-in {
+  opacity:0;
+  transform:scale(.97)
+}
+.motion-in {
+  opacity:1;
+  transform:none
+}
+.wp-theme-primary-menu a,.wp-theme-mega-link-card,.wp-block-button__link {
+  transition-duration:.18s
+}
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto
+  }
+  .motion-fade-up,.motion-scale-in,.wp-theme-sector-card,.medicine-speciality-card,.medicine-doctor-card,.wp-theme-primary-menu .sub-menu,.wp-theme-mega-menu,.wpbb-swiper-block * {
+    animation:none;
+    transition:none;
+    transform:none
+  }
+  .motion-pending {
+    opacity:1
+  }
+
+}

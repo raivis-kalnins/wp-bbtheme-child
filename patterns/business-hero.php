@@ -1,12 +1,30 @@
 <?php
 /**
- * Title: Business hero with image
- * Slug: business-hero
- * Categories: wp-patterns-main
- * Description: A WP BBuilder hero using native heading, paragraph, buttons and image blocks.
+ * Title: Business hero slider
+ * Slug: wp-bbtheme-child/business-hero
+ * Categories: wp-patterns-main, wp-theme-current
+ * Description: Responsive Bootstrap/BBuilder hero powered by Swiper.
  */
+$slides = array(
+    array(
+        'type'       => 'hero',
+        'eyebrow'    => __( 'Strategy + delivery', 'wp-bbtheme-child' ),
+        'title'      => __( 'Digital work with a clearer point of view.', 'wp-bbtheme-child' ),
+        'text'       => __( 'A high-quality Bootstrap and Gutenberg system for ambitious services, agencies and professional teams.', 'wp-bbtheme-child' ),
+        'buttonText' => __( 'Start a project', 'wp-bbtheme-child' ),
+        'buttonUrl'  => '/contact/',
+        'image'      => get_stylesheet_directory_uri() . '/assets/img/demo/office-wide.jpg',
+    ),
+    array(
+        'type'       => 'hero',
+        'eyebrow'    => __( 'Built to evolve', 'wp-bbtheme-child' ),
+        'title'      => __( 'A publishing system your team can actually use.', 'wp-bbtheme-child' ),
+        'text'       => __( 'Reusable BBuilder patterns, thoughtful motion and clean responsive rules without a locked page-builder workflow.', 'wp-bbtheme-child' ),
+        'buttonText' => __( 'See our approach', 'wp-bbtheme-child' ),
+        'buttonUrl'  => '/about/',
+        'image'      => get_stylesheet_directory_uri() . '/assets/img/demo/office-planning.jpg',
+    ),
+);
+$attrs = array( 'slides'=>$slides, 'slidesPerView'=>1, 'slidesTablet'=>1, 'slidesMobile'=>1, 'spaceBetween'=>0, 'speed'=>700, 'rewind'=>true, 'autoplay'=>true, 'autoplayDelay'=>8500, 'pauseOnHover'=>true, 'effect'=>'slide', 'demoStyle'=>'hero', 'showPagination'=>true, 'showNavigation'=>true );
 ?>
-<!-- wp:wpbb/row {"gutterX":"gx-5","gutterY":"gy-5","customClasses":"container wp-theme-sector-hero align-items-center"} -->
-<!-- wp:wpbb/column {"xs":12,"lg":6} --><!-- wp:paragraph {"className":"wp-theme-sector-eyebrow"} --><p class="wp-theme-sector-eyebrow">Your business</p><!-- /wp:paragraph --><!-- wp:heading {"level":1} --><h1 class="wp-block-heading">Make the value of your work easy to understand.</h1><!-- /wp:heading --><!-- wp:paragraph {"className":"wp-theme-sector-lead"} --><p class="wp-theme-sector-lead">A concise introduction that tells visitors who you help and why it matters.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Get started</a></div><!-- /wp:button --></div><!-- /wp:buttons --><!-- /wp:wpbb/column -->
-<!-- wp:wpbb/column {"xs":12,"lg":6} --><!-- wp:image {"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="https://placehold.co/1200x900/e5e7eb/334155?text=Your+Image" alt=""/></figure><!-- /wp:image --><!-- /wp:wpbb/column -->
-<!-- /wp:wpbb/row -->
+<!-- wp:wpbb/row {"containerClass":"container","customClasses":"wp-theme-sector-hero"} --><!-- wp:wpbb/column {"xs":12} --><?php echo '<!-- wp:wpbb/swiper ' . wp_json_encode( $attrs, JSON_UNESCAPED_SLASHES ) . ' /-->'; ?><!-- /wp:wpbb/column --><!-- /wp:wpbb/row -->

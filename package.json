@@ -1,15 +1,13 @@
 {
-  "name": "vite-project",
+  "name": "wp-bbtheme-child",
   "private": true,
-  "version": "0.0.0",
+  "version": "3.8.11.41",
   "type": "module",
   "scripts": {
-    "dev": "vite build --watch",
-    "prod": "vite build",
-    "preview": "vite preview"
+    "dev": "node tools/build.mjs",
+    "prod": "node tools/build.mjs"
   },
-  "devDependencies": {
-    "sass": "^1.93.2",
-    "vite": "^7.2.2"
+  "engines": {
+    "node": ">=16.9"
   }
 }

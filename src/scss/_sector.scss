@@ -1,0 +1,26 @@
+@use 'tokens' as *;
+ body.wp-theme-sector-business {
+  background:$surface
+}
+.wp-theme-sector-business .wpbb-swiper--hero {
+  background:$soft
+}
+.wp-theme-sector-business .wpbb-swiper--hero .wpbb-swiper-slide__media {
+  background:#e9ecff
+}
+.wp-theme-sector-business .wp-theme-services-section .wp-theme-sector-card:nth-child(odd) {
+  background:#fff
+}
+.wp-theme-sector-business .business-testimonials {
+  background:$dark;
+  color:#dce3ee
+}
+.wp-theme-sector-business .business-testimonials h2,.wp-theme-sector-business .business-testimonials h3 {
+  color:#fff
+}
+.wp-theme-sector-business .wp-theme-industries-section .wp-theme-sector-card {
+  border-top:3px solid $primary
+}
+.wp-theme-sector-business .wp-theme-home-cta {
+  background:#0b1020
+}

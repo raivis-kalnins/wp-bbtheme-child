@@ -1,0 +1,130 @@
+@use 'tokens' as *;
+ /* v3.8 feature layer. Shared functional styles live in the parent; these rules keep sector tokens applied to them. */ .wp-theme-partners-section {
+  --wpbb-ess-primary:# {
+    $primary
+  };
+
+}
+ .wp-theme-footer-install a,.wp-theme-footer-utility a,.wp-theme-footer-utility button {
+  transition:opacity .18s ease,border-color .18s ease,color .18s ease,background .18s ease
+}
+ .wp-theme-footer-install a:hover {
+  border-color:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.06)
+}
+ .wp-theme-article-author,.wp-theme-article-navigation a {
+  border-color:$border
+}
+.wp-theme-article-author {
+  background:$soft
+}
+.wp-theme-article-navigation a:hover {
+  border-color:$primary;
+  color:$primary
+}
+ .wp-theme-blog-toolbar__meta {
+  color:$muted
+}
+.wp-theme-blog-reset {
+  border-color:$border;
+  color:$ink
+}
+.wp-theme-blog-reset:hover {
+  border-color:$primary;
+  color:$primary
+}
+ /* v3.8.2 Business visual direction: restrained graphite, classic neutral surfaces. */ body.wp-theme-sector-business {
+  background:#fff
+}
+ .wp-theme-sector-business .wp-theme-site-logo__mark {
+  background:$primary;
+  box-shadow:8px 0 0 #aeb5bc
+}
+ .wp-theme-sector-business .wp-theme-utility-bar,.wp-theme-sector-business .wp-theme-site-footer {
+  background:#151a1f
+}
+ .wp-theme-sector-business .wpbb-swiper--hero {
+  background:#f4f5f6;
+  border-color:#d9dde1;
+  box-shadow:0 10px 30px rgba(18,24,31,.06)
+}
+ .wp-theme-sector-business .wpbb-swiper--hero .wpbb-swiper-slide__media {
+  background:#e7eaed
+}
+ .wp-theme-sector-business .wp-theme-services-section,.wp-theme-sector-business .wp-theme-process-section,.wp-theme-sector-business .wp-theme-gallery-section {
+  background:#f3f4f5
+}
+ .wp-theme-sector-business .wp-theme-sector-card,.wp-theme-sector-business .wp-theme-case-card {
+  border-color:#d9dde1;
+  box-shadow:0 8px 24px rgba(18,24,31,.05)
+}
+ .wp-theme-sector-business .wp-theme-sector-card:hover,.wp-theme-sector-business .wp-theme-case-card:hover {
+  border-color:#aeb5bc;
+  box-shadow:0 16px 42px rgba(18,24,31,.10)
+}
+ .wp-theme-sector-business .wp-theme-card-icon {
+  background:#eef0f2;
+  border-color:#d5d9dd;
+  color:#4b5563
+}
+ .wp-theme-sector-business .wp-theme-sector-eyebrow,.wp-theme-sector-business .wp-theme-card-number,.wp-theme-sector-business .wp-theme-case-card__index {
+  color:#59636d
+}
+ .wp-theme-sector-business .wp-theme-section-heading:after,.wp-theme-sector-business .wp-theme-sector-eyebrow:before {
+  background:#7a848e
+}
+ .wp-theme-sector-business .wp-theme-primary-menu>li>a:hover,.wp-theme-sector-business .wp-theme-primary-menu>.current-menu-item>a,.wp-theme-sector-business .wp-theme-primary-menu>.current-menu-ancestor>a {
+  color:#343b44
+}
+ .wp-theme-sector-business .wp-theme-primary-menu.wp-nav-menu__lastnavbtn>li:last-child>a,.wp-theme-sector-business .btn,.wp-theme-sector-business .wp-block-button__link {
+  background:#434c55;
+  border-color:#434c55
+}
+ .wp-theme-sector-business .wp-theme-primary-menu.wp-nav-menu__lastnavbtn>li:last-child>a:hover,.wp-theme-sector-business .btn:hover,.wp-theme-sector-business .wp-block-button__link:hover {
+  background:#2f363d;
+  border-color:#2f363d
+}
+ .wp-theme-sector-business .is-style-outline>.wp-block-button__link {
+  background:transparent;
+  color:#434c55;
+  border-color:#7f8992
+}
+ .wp-theme-sector-business .is-style-outline>.wp-block-button__link:hover {
+  background:#434c55;
+  color:#fff
+}
+ .wp-theme-sector-business .business-testimonials {
+  background:#1a2026
+}
+ .wp-theme-sector-business .business-testimonials .wpbb-swiper--cards .wpbb-swiper-slide {
+  background:#242b32;
+  border-color:#39424a;
+  color:#dce1e6
+}
+ .wp-theme-sector-business .business-testimonials .wpbb-swiper-slide__eyebrow {
+  color:#adb6bf
+}
+ .wp-theme-sector-business .business-testimonials .wpbb-swiper-slide__title {
+  color:#fff
+}
+ .wp-theme-sector-business .business-testimonials .wpbb-swiper-slide__text {
+  color:#bcc5ce
+}
+ .wp-theme-sector-business .wp-theme-home-cta {
+  background:#1a2026
+}
+ .is-dark-theme .wp-theme-sector-business .wpbb-swiper--hero,.is-dark-theme .wp-theme-sector-business .wp-theme-services-section,.is-dark-theme .wp-theme-sector-business .wp-theme-process-section,.is-dark-theme .wp-theme-sector-business .wp-theme-gallery-section {
+  background:#1a2026
+}
+ .is-dark-theme .wp-theme-sector-business .wp-theme-about-section,.is-dark-theme .wp-theme-sector-business .wp-theme-industries-section,.is-dark-theme .wp-theme-sector-business .wp-theme-cases-section,.is-dark-theme .wp-theme-sector-business .wp-theme-insights-section,.is-dark-theme .wp-theme-sector-business .wp-theme-faq-section {
+  background:#11161b
+}
+ .is-dark-theme .wp-theme-sector-business .wp-theme-sector-card,.is-dark-theme .wp-theme-sector-business .wp-theme-case-card,.is-dark-theme .wp-theme-sector-business .wp-theme-blog-card {
+  background:#20272e;
+  border-color:#39424a
+}
+ .is-dark-theme .wp-theme-sector-business .wp-theme-card-icon,.is-dark-theme .wp-theme-sector-business .wp-theme-card-number {
+  background:#29323b;
+  border-color:#414b55;
+  color:#d5dce3
+}
