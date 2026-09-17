@@ -1,0 +1,5 @@
+<?php defined( 'ABSPATH' ) || exit; get_header(); $is_received=function_exists('is_wc_endpoint_url')&&is_wc_endpoint_url('order-received'); ?>
+<main id="wp-theme-main" class="wp-theme-main wp-theme-woo-legacy wp-theme-woo-legacy--checkout<?php echo $is_received?' wp-theme-woo-legacy--order-received':''; ?>">
+<section class="wp-theme-woo-legacy__hero"><div class="container"><p class="wp-theme-sector-eyebrow"><?php echo esc_html($is_received?__('Order','wp-theme'):__('Checkout','wp-theme')); ?></p><h1><?php echo esc_html($is_received?__('Order details.','wp-theme'):__('Complete your order.','wp-theme')); ?></h1><?php if(!$is_received):?><p><?php esc_html_e('Delivery, billing and payment information in one clear flow.','wp-theme');?></p><?php endif;?></div></section>
+<div class="container wp-theme-woo-legacy__body"><?php if(class_exists('WC_Shortcode_Checkout')) WC_Shortcode_Checkout::output(array()); else echo do_shortcode('[woocommerce_checkout]'); ?></div>
+</main><?php get_footer(); ?>
