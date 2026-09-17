@@ -1,0 +1,252 @@
+/* WP BBTheme child suite 3.8.11.23 - basic visual finish.
+ * Fixes only the remaining scoped component regressions: card gaps, proof/stat item stretch,
+ * Jobs salary two-column layout, Building proof-band spacing, and external hero pagination.
+ * No global .row/container geometry is changed here.
+ */
+:root{
+  --suite-v123-grid-gap:30px;
+  --suite-v123-grid-gap-tablet:22px;
+  --suite-v123-stats-gap:20px;
+  --suite-v123-hero-dot:var(--wpbb-v74-accent,var(--suite-v101-accent,var(--sector-primary,#3155d9)));
+}
+
+/* Dedicated v62 card grids: make CSS Grid authoritative, including over the older gx/gy
+ * compatibility selectors. Removing Bootstrap child padding here means `gap` is the one
+ * and only inter-card spacing source. */
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid,
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid[class*="gx-"],
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid[class*="gy-"]{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:var(--suite-v123-grid-gap-tablet)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid[class*="gx-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]),
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid[class*="gy-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]),
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-self:stretch!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"])>*{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"])>:is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-contact-card){
+  height:100%!important;
+  align-self:stretch!important;
+}
+@media(min-width:768px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(min-width:992px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid{gap:var(--suite-v123-grid-gap)!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>.col-lg-12){grid-template-columns:1fr!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>.col-lg-6){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>.col-lg-4){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>.col-lg-3){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:575.98px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid{gap:18px!important}
+}
+
+/* Home proof/stat rows. The columns were correctly distributed in v122, but some rendered
+ * fun-fact wrappers still kept intrinsic widths. Stretch every direct stat component to fill
+ * its grid cell. This also fixes Business and Building's narrow 01/02/03/04 slivers. */
+html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-v67-section-inner>:is(.row,.wpbb-row),
+html body.wpbb-sector-premium.home #wp-theme-main .wp-theme-sector-proof>:is(.row,.wpbb-row){
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:var(--suite-v123-stats-gap)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-v67-section-inner>:is(.row,.wpbb-row)>*,
+html body.wpbb-sector-premium.home #wp-theme-main .wp-theme-sector-proof>:is(.row,.wpbb-row)>*{
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-v67-section-inner>:is(.row,.wpbb-row)>*>*,
+html body.wpbb-sector-premium.home #wp-theme-main .wp-theme-sector-proof>:is(.row,.wpbb-row)>*>*{
+  box-sizing:border-box!important;
+  display:block;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  flex:1 1 auto!important;
+  align-self:stretch!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) :is(.wpbb-fun-fact,.wp-theme-sector-proof__item){
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  min-height:100%!important;
+}
+@media(min-width:992px){
+  html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-v67-section-inner>:is(.row,.wpbb-row),
+  html body.wpbb-sector-premium.home #wp-theme-main .wp-theme-sector-proof>:is(.row,.wpbb-row){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:575.98px){
+  html body.wpbb-sector-premium.home #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-v67-section-inner>:is(.row,.wpbb-row),
+  html body.wpbb-sector-premium.home #wp-theme-main .wp-theme-sector-proof>:is(.row,.wpbb-row){grid-template-columns:1fr!important;gap:16px!important}
+}
+
+/* Building/trade proof band: its pattern is a plain BBuilder row rather than v62-card-grid. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row),
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row)[class*="gx-"],
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row)[class*="gy-"]{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:24px!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row)>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row)>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"])>*{
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+}
+@media(min-width:768px){
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row){grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:26px!important}
+}
+
+/* Jobs Salary calculator: v121's Bootstrap flex row plus gx-5 made the 5/7 columns wrap.
+ * Make this one named component an explicit two-column grid on desktop. */
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row,
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row[class*="gx-"],
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row[class*="gy-"]{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)!important;
+  gap:44px!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:center!important;
+}
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]),
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row[class*="gx-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]),
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row[class*="gy-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"])>*{
+  min-width:0!important;
+  max-width:100%!important;
+}
+@media(max-width:991.98px){
+  html body #wp-theme-main .wpbb-jobs-home-salary .wpbb-jobs-home-salary-row{grid-template-columns:1fr!important;gap:28px!important;align-items:start!important}
+}
+
+/* Hero clarity + external pager. The v121 fallback looked only for a descendant .swiper;
+ * many current hero blocks are themselves the .swiper element, so their pagination never
+ * appeared. v123 JS creates this pager outside the clipped slider. */
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{
+  image-rendering:auto!important;
+  filter:none!important;
+  transform:none!important;
+  backface-visibility:visible!important;
+  will-change:auto!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero.wpbb-v123-has-external-pager .swiper-pagination,
+html body #wp-theme-main .wpbb-swiper--hero.wpbb-v123-has-external-pager .wpbb-v121-pagination{
+  display:none!important;
+}
+html body #wp-theme-main .wpbb-v123-hero-pagination{
+  box-sizing:border-box!important;
+  position:relative!important;
+  z-index:25!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  width:100%!important;
+  min-height:22px!important;
+  margin:10px auto 12px!important;
+  padding:0!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+html body #wp-theme-main .wpbb-v123-hero-bullet{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  width:8px!important;
+  height:8px!important;
+  min-width:8px!important;
+  min-height:8px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:#cfd5df!important;
+  background:color-mix(in srgb,var(--suite-v123-hero-dot) 30%,#fff)!important;
+  box-shadow:0 0 0 1px rgba(49,85,217,.14)!important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--suite-v123-hero-dot) 16%,transparent)!important;
+  cursor:pointer!important;
+  opacity:1!important;
+  transition:width .18s ease,background-color .18s ease,box-shadow .18s ease!important;
+}
+html body #wp-theme-main .wpbb-v123-hero-bullet.is-active{
+  width:26px!important;
+  background:var(--suite-v123-hero-dot)!important;
+  box-shadow:none!important;
+}
+html body #wp-theme-main .wpbb-v123-hero-bullet:focus-visible{
+  outline:2px solid var(--suite-v123-hero-dot)!important;
+  outline-offset:3px!important;
+}
+@media(max-width:767.98px){
+  html body #wp-theme-main .wpbb-v123-hero-pagination{margin-top:8px!important;margin-bottom:8px!important}
+}

@@ -1,0 +1,147 @@
+/* WP BBTheme child suite 3.8.11.13 — final hero edge/clarity and Latest Thinking grid alignment. */
+:root{--suite-v113-shell:1440px;--suite-v113-pad:32px}
+
+/* Latest Thinking / related editorial cards: use the actual site grid, not the older 1320px BBuilder row.
+   100vw is intentional here so a nested legacy row cannot shrink the section a second time. */
+html body #wp-theme-main .wp-theme-insights-section > :is(.wpbb-row,.row,.container,.wpbb-v67-section-inner){
+  box-sizing:border-box!important;
+  width:min(calc(100vw - (var(--suite-v113-pad) * 2)),var(--suite-v113-shell))!important;
+  max-width:var(--suite-v113-shell)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section > :is(.wpbb-row,.row,.container,.wpbb-v67-section-inner) > :is(.wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  flex:0 0 100%!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section :is(.wp-theme-blog-preview-container,.wp-theme-blog-preview,.wp-block-query){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:24px!important;
+  width:calc(100% - 48px)!important;
+  max-width:none!important;
+  margin:0 24px!important;
+  margin-inline:24px!important;
+  padding:0!important;
+  padding-inline:0!important;
+  padding-inline-start:0!important;
+  list-style:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > *,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > *:first-child,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > li:first-child,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > .wp-block-post:first-child{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  margin-inline:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  inset-inline-start:auto!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card:first-child{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  margin-inline:0!important;
+  left:auto!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image > a,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  box-sizing:border-box!important;
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  margin-inline:0!important;
+  padding:0!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  height:auto!important;
+  aspect-ratio:16/10!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-actions{
+  box-sizing:border-box!important;
+  clear:both!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:var(--suite-v113-shell)!important;
+  margin:34px auto 0!important;
+  padding:0!important;
+}
+
+/* Heroes: use a native-resolution child asset at its own scale.  The stronger white-to-transparent
+   overlay intentionally crosses the image's left edge so there is no visible vertical photo seam. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+  opacity:1!important;
+  filter:none!important;
+  image-rendering:auto!important;
+  background-color:#fff!important;
+  background-image:
+    linear-gradient(90deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,1) 24%,
+      rgba(255,255,255,.995) 34%,
+      rgba(255,255,255,.96) 43%,
+      rgba(255,255,255,.84) 52%,
+      rgba(255,255,255,.64) 60%,
+      rgba(255,255,255,.40) 68%,
+      rgba(255,255,255,.20) 75%,
+      rgba(255,255,255,.07) 81%,
+      rgba(255,255,255,0) 87%),
+    var(--suite-v113-hero,var(--suite-v112-hero,var(--suite-v111-hero)))!important;
+  background-size:100% 100%,auto 108%!important;
+  background-position:center,right center!important;
+  background-repeat:no-repeat,no-repeat!important;
+}
+
+@media(max-width:991.98px){
+  :root{--suite-v113-pad:24px}
+  html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:767.98px){
+  :root{--suite-v113-pad:18px}
+  html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:1fr!important;width:100%!important;margin-inline:0!important}
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+    background-image:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.88) 34%,rgba(255,255,255,.50) 58%,rgba(255,255,255,.12) 82%,rgba(255,255,255,0) 100%),var(--suite-v113-hero,var(--suite-v112-hero,var(--suite-v111-hero)))!important;
+    background-size:100% 100%,cover!important;
+    background-position:center,center!important;
+  }
+}

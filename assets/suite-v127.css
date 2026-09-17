@@ -1,0 +1,372 @@
+/* WP BBTheme child suite 3.8.11.27 - final live-regression hardening.
+ * Component-scoped only: no global Bootstrap .container/.row reset.
+ */
+:root{
+  --suite-v127-gap:24px;
+  --suite-v127-gap-lg:28px;
+  --suite-v127-gap-sm:18px;
+  --suite-v127-radius:16px;
+  --suite-v127-ink:var(--theme-heading-color,var(--wpbb-v74-ink,#13233d));
+  --suite-v127-muted:var(--theme-text-color,var(--wpbb-v74-muted,#5f6b7a));
+  --suite-v127-accent:var(--wpbb-v74-accent,var(--suite-v101-accent,var(--sector-v83-accent,var(--sector-primary,#3155d9))));
+  --suite-v127-line:var(--suite-v108-line,var(--suite-v107-line,#dfe7ea));
+}
+
+/* --------------------------------------------------------------------------
+ * Runtime-verified card rows. JS only marks rows whose direct columns each
+ * contain a card-like component, so this does not affect media/text layouts,
+ * finders, WooCommerce/catalogue rows or Swipers.
+ * -------------------------------------------------------------------------- */
+html body #wp-theme-main .wpbb-v127-safe-card-grid,
+html body #wp-theme-main .wpbb-v127-process-grid,
+html body #wp-theme-main .wpbb-v127-proof-grid{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:var(--suite-v127-gap-sm)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid) > *{
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+  align-self:stretch!important;
+}
+html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid) .wpbb-v127-grid-card{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  margin:0!important;
+  align-self:stretch!important;
+}
+@media(min-width:720px){
+  html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:22px!important;
+  }
+}
+@media(min-width:992px){
+  html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid){gap:var(--suite-v127-gap-lg)!important}
+  html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid)[data-wpbb-v127-cols="2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid)[data-wpbb-v127-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body #wp-theme-main :is(.wpbb-v127-safe-card-grid,.wpbb-v127-process-grid,.wpbb-v127-proof-grid)[data-wpbb-v127-cols="4"]{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+
+/* --------------------------------------------------------------------------
+ * Delivery / process cards. Older imported pages sometimes lost the
+ * wp-theme-process-card class, so v127 marks the real card at runtime.
+ * Reset the cell as well as the card: the visible half-capsule on deployed
+ * pages was coming from inherited radius/background on more than one layer.
+ * -------------------------------------------------------------------------- */
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-cell{
+  position:relative!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask:none!important;
+  -webkit-mask:none!important;
+  overflow:visible!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-cell::before,
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-cell::after{
+  content:none!important;
+  display:none!important;
+  border-radius:0!important;
+  clip-path:none!important;
+}
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-card{
+  box-sizing:border-box!important;
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  margin:0!important;
+  border-radius:var(--suite-v127-radius)!important;
+  border-top-left-radius:var(--suite-v127-radius)!important;
+  border-top-right-radius:var(--suite-v127-radius)!important;
+  border-bottom-right-radius:var(--suite-v127-radius)!important;
+  border-bottom-left-radius:var(--suite-v127-radius)!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask:none!important;
+  -webkit-mask:none!important;
+  overflow:hidden!important;
+  transform:none!important;
+  background:#fff!important;
+  color:var(--suite-v127-ink)!important;
+}
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-card::before,
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-card::after{
+  content:none!important;
+  display:none!important;
+  border-radius:0!important;
+  clip-path:none!important;
+}
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-card :is(.card-body,.wpbb-icon-card__body,.wpbb-icon-card__content){
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  border-radius:0!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask:none!important;
+  -webkit-mask:none!important;
+  transform:none!important;
+  background:transparent!important;
+}
+html body #wp-theme-main .wp-theme-process-section .wpbb-v127-process-card :is(h2,h3,h4,p,strong,span){
+  writing-mode:horizontal-tb!important;
+}
+
+/* --------------------------------------------------------------------------
+ * Automotive live-page hardening.
+ * -------------------------------------------------------------------------- */
+html body.wpbb-sector-premium-automotive #wp-theme-main .wp-theme-industries-section :is(.wp-theme-section-heading,.wpbb-v62-section-heading) :is(h1,h2,h3,h4),
+html body.wpbb-sector-premium-automotive #wp-theme-main .wp-theme-industries-section > :is(h1,h2,h3,h4){
+  color:#13233d!important;
+  -webkit-text-fill-color:#13233d!important;
+  opacity:1!important;
+  visibility:visible!important;
+  text-shadow:none!important;
+}
+html body.wpbb-sector-premium-automotive #wp-theme-main .wp-theme-industries-section :is(.wp-theme-sector-eyebrow,.wp-theme-section-eyebrow,.wpbb-section-eyebrow){
+  color:#c63d2f!important;
+  -webkit-text-fill-color:#c63d2f!important;
+  opacity:1!important;
+}
+/* Generic three-card proof/import rows on older Automotive home content. */
+html body.wpbb-sector-premium-automotive #wp-theme-main .wpbb-v127-safe-card-grid[data-wpbb-v127-cols="3"] .wpbb-v127-grid-card{
+  color:#13233d!important;
+  background:#fff!important;
+}
+
+/* Keep the stable v126 Automotive catalogue recovery authoritative. */
+html body.wpbb-sector-premium-automotive #wp-theme-main .wp-theme-home-product-catalogue .wpbb-catalogue-card{
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  writing-mode:horizontal-tb!important;
+}
+html body.wpbb-sector-premium-automotive #wp-theme-main .wp-theme-home-product-catalogue :is(h1,h2,h3,h4,h5,p,a,span,strong,small){
+  writing-mode:horizontal-tb!important;
+  word-break:normal!important;
+  overflow-wrap:anywhere!important;
+}
+
+/* --------------------------------------------------------------------------
+ * Hero image + gradient correction for Business and Building Services.
+ * Use the direct 2560px child-theme assets, keep the left copy area clean and
+ * fade only across the image boundary instead of whitening half the photo.
+ * -------------------------------------------------------------------------- */
+html body #wp-theme-main .wpbb-swiper--hero{
+  position:relative!important;
+  overflow:hidden!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  image-rendering:auto!important;
+  filter:none!important;
+  transform:none!important;
+  backface-visibility:visible!important;
+}
+html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+  #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media{
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:0 0 0 auto!important;
+  width:61%!important;
+  height:100%!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+  opacity:1!important;
+  filter:none!important;
+  transform:none!important;
+  background:#eef2f4!important;
+}
+html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+  #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  opacity:1!important;
+  background:linear-gradient(90deg,
+    #fff 0%,
+    #fff 31%,
+    rgba(255,255,255,.98) 34%,
+    rgba(255,255,255,.82) 37%,
+    rgba(255,255,255,.48) 40%,
+    rgba(255,255,255,.18) 43%,
+    rgba(255,255,255,.04) 46%,
+    rgba(255,255,255,0) 49%)!important;
+  filter:none!important;
+  backdrop-filter:none!important;
+}
+html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+  #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:after{
+  content:none!important;
+  display:none!important;
+}
+html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+  #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero > :not(.wpbb-swiper-slide__media){
+  position:relative!important;
+  z-index:2!important;
+}
+@media(max-width:767.98px){
+  html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+    #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media{
+    inset:0!important;
+    width:100%!important;
+    opacity:.72!important;
+  }
+  html body:is(.wpbb-sector-premium-business,.wpbb-sector-premium-building-services).home
+    #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+    background:linear-gradient(180deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 44%,rgba(255,255,255,.76) 64%,rgba(255,255,255,.30) 84%,rgba(255,255,255,.08) 100%)!important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * v127 is the sole hero pagination owner. The deployed v126 pages could show
+ * one dot because the DOM only exposed one physical slide when first scanned;
+ * v127 JS uses the configured full-resolution hero set as the authoritative
+ * logical slide count and rebuilds the pager when Swiper finishes initialising.
+ * -------------------------------------------------------------------------- */
+html body #wp-theme-main .wpbb-swiper--hero.wpbb-v127-has-pagination
+  :is(.swiper-pagination,.wpbb-v120-pagination,.wpbb-v121-pagination,.wpbb-v123-hero-pagination,.wpbb-v124-hero-pagination,.wpbb-v126-hero-pagination):not(.wpbb-v127-hero-pagination){
+  display:none!important;
+}
+html body #wp-theme-main :is(.wpbb-v120-pagination,.wpbb-v121-pagination,.wpbb-v123-hero-pagination,.wpbb-v124-hero-pagination,.wpbb-v126-hero-pagination).wpbb-v127-retired-pager{
+  display:none!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-v127-hero-pagination{
+  box-sizing:border-box!important;
+  position:absolute!important;
+  left:50%!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:16px!important;
+  z-index:95!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  width:max-content!important;
+  min-width:0!important;
+  max-width:calc(100% - 32px)!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:7px 9px!important;
+  border:1px solid rgba(255,255,255,.76)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 8px 24px rgba(15,23,42,.14)!important;
+  transform:translateX(-50%)!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  backdrop-filter:blur(6px)!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-v127-hero-bullet{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  flex:0 0 auto!important;
+  width:8px!important;
+  height:8px!important;
+  min-width:8px!important;
+  min-height:8px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:#cbd5e1!important;
+  background:color-mix(in srgb,var(--suite-v127-accent) 32%,#fff)!important;
+  box-shadow:none!important;
+  opacity:1!important;
+  cursor:pointer!important;
+  transition:width .18s ease,background-color .18s ease!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-v127-hero-bullet.is-active{
+  width:25px!important;
+  background:var(--suite-v127-accent)!important;
+}
+@media(max-width:767.98px){
+  html body #wp-theme-main .wpbb-swiper--hero .wpbb-v127-hero-pagination{bottom:10px!important;padding:6px 8px!important}
+}
+
+/* v127.1 static fallback: process-card shape must be correct even before the
+ * runtime class pass (or if a cached page uses generic sector/icon classes). */
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card),
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card) > .card,
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card) .card{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  max-width:none!important;
+  border-radius:var(--suite-v127-radius)!important;
+  border-top-left-radius:var(--suite-v127-radius)!important;
+  border-top-right-radius:var(--suite-v127-radius)!important;
+  border-bottom-right-radius:var(--suite-v127-radius)!important;
+  border-bottom-left-radius:var(--suite-v127-radius)!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask:none!important;
+  -webkit-mask:none!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card)::before,
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card)::after,
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card) > .card::before,
+html body #wp-theme-main .wp-theme-process-section :is(.wp-theme-process-card,.wp-theme-sector-card,.wpbb-icon-card) > .card::after{
+  border-radius:0!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask:none!important;
+  -webkit-mask:none!important;
+}
+
+/* Text-signature fallback for the Automotive section heading. The JS adds
+ * this class when an older imported page has lost the normal section class. */
+html body.wpbb-sector-premium-automotive #wp-theme-main .wpbb-v127-auto-industries-heading{
+  color:#13233d!important;
+  -webkit-text-fill-color:#13233d!important;
+  opacity:1!important;
+  visibility:visible!important;
+  text-shadow:none!important;
+}

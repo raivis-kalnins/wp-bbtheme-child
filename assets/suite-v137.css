@@ -1,0 +1,122 @@
+/* 3.8.11.37 — wide section grid + tighter homepage rhythm.
+   Restores the 1440px page shell used by the header while keeping the hero full bleed. */
+:root{
+  --wpbb-v137-shell:1440px;
+  --wpbb-v137-pad:32px;
+  --wpbb-v137-section-y:48px;
+  --wpbb-v137-gap:24px;
+}
+
+/* Every normal homepage section follows the same wide grid as the header/footer. */
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) > :is(.container,.wp-block-group__inner-container,.wpbb-v67-section-inner),
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-process-shell,
+html body.wpbb-v137 #wp-theme-main :is(.wp-theme-section-shell,.wpbb-v67-section-shell) > :is(.container,.wpbb-v67-section-inner,.wp-block-group__inner-container){
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v137-pad) * 2)),var(--wpbb-v137-shell))!important;
+  max-width:var(--wpbb-v137-shell)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Do not let older 920/1180/1240 wrappers shorten the actual section grid. */
+html body.wpbb-v137 #wp-theme-main :is(
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-industries-grid,
+  .wp-theme-services-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid,
+  .wp-theme-case-studies,
+  .wp-theme-feature-grid,
+  .wp-theme-card-grid,
+  .wp-theme-sector-cards,
+  .wp-theme-sector-proof,
+  .wp-theme-home-stats,
+  .wp-theme-gallery-grid,
+  .wp-theme-sector-gallery,
+  .wp-theme-insights-grid,
+  .wp-theme-blog-grid,
+  .wp-theme-blog-preview,
+  .wp-theme-blog-preview-container,
+  .wp-theme-home-product-catalogue,
+  .wp-theme-products-grid,
+  .wp-theme-sector-process-grid,
+  .wpbb-v136-process-grid,
+  .wpbb-v136-grid,
+  .wpbb-v136-stats-grid
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Main rows should consume the whole section shell and use consistent gutters. */
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) :is(.row,.wpbb-row):not(.swiper-wrapper){
+  max-width:none!important;
+}
+html body.wpbb-v137 #wp-theme-main :is(.wpbb-v136-grid,.wpbb-v136-process-grid){gap:var(--wpbb-v137-gap)!important}
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-stats-grid{gap:18px!important}
+
+/* Reduce the large vertical voids introduced by accumulated section padding/margins. */
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  box-sizing:border-box!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:var(--wpbb-v137-section-y)!important;
+  padding-bottom:var(--wpbb-v137-section-y)!important;
+}
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) + .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){margin-top:0!important}
+html body.wpbb-v137 #wp-theme-main :is(.wp-theme-section-heading,.wpbb-v62-section-heading){
+  margin-top:0!important;
+  margin-bottom:24px!important;
+}
+html body.wpbb-v137 #wp-theme-main :is(.wp-theme-sector-media-text,.wp-theme-media-text,.wp-theme-about-media){
+  column-gap:40px!important;
+  row-gap:32px!important;
+}
+
+/* Trust/logo strips are intentionally shorter than content sections. */
+html body.wpbb-v137 #wp-theme-main :is(.wp-theme-partners-section,.wp-theme-trusted-section,.wp-theme-logo-section,.wp-theme-brand-strip,.wp-theme-sector-partners).wpbb-v136-align-section{
+  padding-top:30px!important;
+  padding-bottom:30px!important;
+}
+
+/* Wide layouts should not be pulled back inward by legacy direct-child caps. */
+@media(min-width:1040px){
+  html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) :is(.wpbb-v136-grid,.wpbb-v136-process-grid,.wpbb-v136-stats-grid){width:100%!important;max-width:none!important}
+  html body.wpbb-v137 #wp-theme-main .wpbb-v136-process-card{min-height:164px!important;padding:22px!important}
+}
+
+@media(max-width:1199.98px){
+  :root{--wpbb-v137-pad:24px;--wpbb-v137-section-y:44px;--wpbb-v137-gap:22px}
+}
+@media(max-width:759px){
+  :root{--wpbb-v137-pad:16px;--wpbb-v137-section-y:36px;--wpbb-v137-gap:18px}
+  html body.wpbb-v137 #wp-theme-main :is(.wp-theme-section-heading,.wpbb-v62-section-heading){margin-bottom:20px!important}
+}
+
+/* Nested section shells were picking up section spacing twice after the DOM owner pass. */
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+
+/* Common inner wrappers from older releases must not reintroduce narrow caps. */
+html body.wpbb-v137 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) :is(
+  .wpbb-v67-section-inner,
+  .wp-theme-blog-preview-container,
+  .wp-theme-blog-preview,
+  .wp-theme-sector-proof,
+  .wp-theme-sector-media-text,
+  .wp-theme-gallery-section > .container,
+  .wp-theme-case-studies-section > .container,
+  .wp-theme-industries-section > .container,
+  .wp-theme-services-section > .container
+){
+  width:100%!important;
+  max-width:none!important;
+}

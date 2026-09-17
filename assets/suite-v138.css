@@ -1,0 +1,165 @@
+/* 3.8.11.38 — canonical 1320px section grid + high-quality hero source pass.
+   Keep full-width section backgrounds and full-bleed hero media, while every
+   content section shares the exact header grid. */
+:root{
+  --wpbb-v138-content:1320px;
+  --wpbb-v138-pad:24px;
+  --wpbb-v138-section-y:42px;
+  --wpbb-v138-gap:24px;
+}
+
+/* v137 widened the shell to 1440px. The actual site/header grid is 1320px. */
+html body.wpbb-v138{
+  --wpbb-v136-shell:var(--wpbb-v138-content);
+  --wpbb-v137-shell:var(--wpbb-v138-content);
+  --wpbb-v137-pad:var(--wpbb-v138-pad);
+  --wpbb-v137-section-y:var(--wpbb-v138-section-y);
+  --wpbb-v137-gap:var(--wpbb-v138-gap);
+}
+
+/* One canonical content edge for every normal homepage section. */
+html body.wpbb-v138 #wp-theme-main :is(.wpbb-v67-section-shell,.wp-theme-section-shell,.wpbb-v136-align-section):not(.wpbb-v136-hero-shell) > :is(
+  .wpbb-v67-section-inner,
+  .container,
+  .wp-block-group__inner-container,
+  .wpbb-v136-process-shell
+),
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-process-shell{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v138-pad) * 2)),var(--wpbb-v138-content))!important;
+  max-width:var(--wpbb-v138-content)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Patterns that render their row itself as the container use the same edge. */
+html body.wpbb-v138 #wp-theme-main :is(.wpbb-v67-section-shell,.wp-theme-section-shell,.wpbb-v136-align-section):not(.wpbb-v136-hero-shell) > :is(.row,.wpbb-row).container{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v138-pad) * 2)),var(--wpbb-v138-content))!important;
+  max-width:var(--wpbb-v138-content)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Nothing inside the canonical section shell may create a second narrow grid. */
+html body.wpbb-v138 #wp-theme-main :is(.wpbb-v67-section-inner,.wpbb-v136-process-shell) :is(
+  .wp-theme-section-heading,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-industries-grid,
+  .wp-theme-services-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid,
+  .wp-theme-case-studies,
+  .wp-theme-feature-grid,
+  .wp-theme-card-grid,
+  .wp-theme-sector-cards,
+  .wp-theme-sector-proof,
+  .wp-theme-home-stats,
+  .wp-theme-gallery-grid,
+  .wp-theme-sector-gallery,
+  .wp-theme-insights-grid,
+  .wp-theme-blog-grid,
+  .wp-theme-blog-preview,
+  .wp-theme-blog-preview-container,
+  .wp-theme-home-product-catalogue,
+  .wp-theme-products-grid,
+  .wp-theme-sector-process-grid,
+  .wpbb-v136-process-grid,
+  .wpbb-v136-grid,
+  .wpbb-v136-stats-grid,
+  .wp-theme-sector-media-text,
+  .wp-theme-media-text,
+  .wp-theme-about-media,
+  .wp-block-query
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Use the same predictable horizontal gaps across the main card systems. */
+html body.wpbb-v138 #wp-theme-main :is(.wpbb-v136-grid,.wpbb-v136-process-grid){gap:var(--wpbb-v138-gap)!important}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-stats-grid{gap:18px!important}
+html body.wpbb-v138 #wp-theme-main :is(.wp-theme-sector-media-text,.wp-theme-media-text,.wp-theme-about-media){column-gap:40px!important;row-gap:28px!important}
+
+/* Tight, consistent vertical rhythm. Background sections stay full width. */
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:var(--wpbb-v138-section-y)!important;
+  padding-bottom:var(--wpbb-v138-section-y)!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+html body.wpbb-v138 #wp-theme-main :is(.wp-theme-section-heading,.wpbb-v62-section-heading){
+  margin-top:0!important;
+  margin-bottom:22px!important;
+}
+html body.wpbb-v138 #wp-theme-main :is(.wp-theme-partners-section,.wp-theme-trusted-section,.wp-theme-logo-section,.wp-theme-brand-strip,.wp-theme-sector-partners).wpbb-v136-align-section{
+  padding-top:28px!important;
+  padding-bottom:28px!important;
+}
+
+/* Hero remains viewport-wide, but its text follows the same 1320px left edge. */
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero-shell,
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero{
+  width:100vw!important;
+  max-width:none!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){
+  width:min(48%,650px)!important;
+  max-width:650px!important;
+  padding-left:max(var(--wpbb-v138-pad),calc((100vw - var(--wpbb-v138-content))/2))!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){
+  width:70%!important;
+  background:#eef2f5!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media)::after{
+  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.995) 10%,rgba(255,255,255,.94) 20%,rgba(255,255,255,.72) 31%,rgba(255,255,255,.38) 41%,rgba(255,255,255,.12) 50%,rgba(255,255,255,0) 60%)!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media) img,
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero .wpbb-v136-hero-image{
+  object-fit:cover!important;
+  object-position:center center!important;
+  filter:none!important;
+  image-rendering:auto!important;
+}
+
+/* The process/delivery cards stay on the same section edge and never shrink. */
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-process-grid{
+  grid-template-columns:1fr!important;
+  width:100%!important;
+}
+html body.wpbb-v138 #wp-theme-main .wpbb-v136-process-card{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  min-height:150px!important;
+  border-radius:16px!important;
+}
+@media(min-width:760px){
+  html body.wpbb-v138 #wp-theme-main .wpbb-v136-process-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+
+@media(max-width:1199.98px){
+  :root{--wpbb-v138-pad:22px;--wpbb-v138-section-y:38px;--wpbb-v138-gap:22px}
+}
+@media(max-width:759px){
+  :root{--wpbb-v138-pad:16px;--wpbb-v138-section-y:30px;--wpbb-v138-gap:18px}
+  html body.wpbb-v138 #wp-theme-main :is(.wp-theme-section-heading,.wpbb-v62-section-heading){margin-bottom:18px!important}
+  html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){
+    width:100%!important;
+    max-width:none!important;
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+  html body.wpbb-v138 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){width:100%!important}
+}

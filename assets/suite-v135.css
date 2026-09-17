@@ -1,0 +1,51 @@
+/* 3.8.11.35 final Business/Building + shared process cleanup. */
+:root{--wpbb-v135-shell:1180px;--wpbb-v135-gap:24px;--wpbb-v135-line:#dde4ea;--wpbb-v135-ink:#102c57;--wpbb-v135-copy:#5f6b79;--wpbb-v135-shadow:0 10px 28px rgba(15,35,69,.07)}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hidden{display:none!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-align-section>.container,
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-section-wide>.container,
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-section-wide{box-sizing:border-box!important;width:min(calc(100% - 48px),var(--wpbb-v135-shell))!important;max-width:var(--wpbb-v135-shell)!important;margin-left:auto!important;margin-right:auto!important}
+
+/* One hero only, with full-resolution media and a controlled text fade. */
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero-host{position:relative!important;box-sizing:border-box!important;width:min(calc(100% - 32px),1440px)!important;max-width:1440px!important;margin:0 auto!important;overflow:hidden!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero{position:relative!important;width:100%!important;max-width:none!important;overflow:hidden!important;border-radius:18px!important;background:#fff!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.swiper-slide,.wpbb-swiper-slide){position:relative!important;min-height:500px!important;height:auto!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#fff!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){position:relative!important;z-index:6!important;box-sizing:border-box!important;width:min(46%,620px)!important;max-width:620px!important;margin:0!important;padding:62px clamp(28px,4.4vw,76px) 72px!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){position:absolute!important;z-index:1!important;inset:0 0 0 auto!important;width:68%!important;height:100%!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important;border-radius:0!important;background:#eef2f5!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media)::after{content:""!important;display:block!important;position:absolute!important;z-index:3!important;inset:0!important;pointer-events:none!important;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 8%,rgba(255,255,255,.78) 20%,rgba(255,255,255,.42) 31%,rgba(255,255,255,.12) 42%,rgba(255,255,255,0) 54%)!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media) img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;opacity:1!important;filter:none!important;transform:none!important;image-rendering:auto!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero-pagination{position:absolute!important;z-index:150!important;left:50%!important;bottom:14px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;width:max-content!important;padding:6px 9px!important;border:1px solid rgba(16,44,87,.08)!important;border-radius:999px!important;background:rgba(255,255,255,.94)!important;box-shadow:0 6px 20px rgba(15,35,69,.12)!important;transform:translateX(-50%)!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero-bullet{appearance:none!important;display:block!important;width:8px!important;height:8px!important;min-width:8px!important;min-height:8px!important;margin:0!important;padding:0!important;border:0!important;border-radius:999px!important;background:#c9d0da!important;box-shadow:none!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero-bullet.is-active{width:24px!important;background:var(--wpbb-accent,var(--wpbb-primary,#5b63e6))!important}
+
+/* Final single process row. No legacy bubbles, pseudo-capsules or duplicate row. */
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-section{overflow:visible!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-grid{display:grid!important;grid-template-columns:1fr!important;gap:20px!important;width:100%!important;max-width:none!important;margin:24px 0 0!important;padding:0!important;align-items:stretch!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card{box-sizing:border-box!important;position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;width:100%!important;max-width:none!important;min-width:0!important;min-height:168px!important;height:100%!important;margin:0!important;padding:24px!important;border:1px solid var(--wpbb-v135-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:var(--wpbb-v135-shadow)!important;clip-path:none!important;-webkit-clip-path:none!important;transform:none!important;overflow:hidden!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card::before,html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card::after,html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card *::before,html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card *::after{content:none!important;display:none!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-badge{position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:38px!important;height:30px!important;margin:0 0 14px!important;padding:5px 10px!important;border:1px solid color-mix(in srgb,var(--wpbb-accent,var(--wpbb-primary,#5b63e6)) 25%,transparent)!important;border-radius:999px!important;background:color-mix(in srgb,var(--wpbb-accent,var(--wpbb-primary,#5b63e6)) 8%,#fff)!important;color:var(--wpbb-accent,var(--wpbb-primary,#5b63e6))!important;font-size:11px!important;font-weight:800!important;line-height:1!important;letter-spacing:.06em!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card h3{margin:0 0 10px!important;color:var(--wpbb-heading,var(--wpbb-v135-ink))!important;font-size:20px!important;line-height:1.2!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-card p{margin:0!important;color:var(--wpbb-muted,var(--wpbb-v135-copy))!important;line-height:1.6!important}
+@media(min-width:760px){html body.wpbb-v135 #wp-theme-main .wpbb-v135-process-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important}}
+
+/* Proof/fun facts and common card rows use deterministic widths. */
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-stats-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;width:100%!important;margin:0!important;padding:0!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-stats-grid>.wpbb-v135-grid-cell{float:none!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;flex:none!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-stat-card{box-sizing:border-box!important;width:100%!important;max-width:none!important;min-width:0!important;height:100%!important;margin:0!important;border-radius:12px!important;overflow:hidden!important}
+@media(min-width:900px){html body.wpbb-v135 #wp-theme-main .wpbb-v135-stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important}}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;width:100%!important;margin:0!important;padding:0!important;align-items:stretch!important}
+html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid>.wpbb-v135-grid-cell{float:none!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;flex:none!important}
+@media(min-width:720px){html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid.wpbb-v135-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid:is(.wpbb-v135-cols-3,.wpbb-v135-cols-4){grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(min-width:1040px){html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid.wpbb-v135-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}html body.wpbb-v135 #wp-theme-main .wpbb-v135-card-grid.wpbb-v135-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+
+/* Building: never clip the finder/result catalogue to a single row. */
+html body.wpbb-v135-theme-building-services #wp-theme-main :is(.wp-theme-services-section,.wp-theme-sector-finder,.wp-theme-section-shell){overflow:visible!important;max-height:none!important}
+html body.wpbb-v135-theme-building-services #wp-theme-main :is(.wp-theme-services-section,.wp-theme-sector-finder) :is(.row,.wpbb-row,[class*="grid"]){max-height:none!important;overflow:visible!important}
+
+@media(max-width:759px){
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-align-section>.container,html body.wpbb-v135 #wp-theme-main .wpbb-v135-section-wide>.container,html body.wpbb-v135 #wp-theme-main .wpbb-v135-section-wide{width:min(calc(100% - 32px),var(--wpbb-v135-shell))!important}
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero-host{width:calc(100% - 20px)!important}
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.swiper-slide,.wpbb-swiper-slide){display:flex!important;flex-direction:column!important;min-height:0!important}
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){order:1!important;width:100%!important;max-width:none!important;padding:36px 22px 28px!important}
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){position:relative!important;order:2!important;inset:auto!important;width:100%!important;height:280px!important}
+  html body.wpbb-v135 #wp-theme-main .wpbb-v135-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media)::after{display:none!important}
+}

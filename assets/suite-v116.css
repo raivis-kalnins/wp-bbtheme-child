@@ -1,0 +1,83 @@
+/* WP BBTheme child suite 3.8.11.16 - reset-safe grid, mega-menu, hero, consent and quote finish. */
+:root{--suite-v116-content:1320px;--suite-v116-pad:24px}
+
+/* Desktop mega menu: measured header edge, no visible dead strip, generous invisible hover bridge. */
+@media(min-width:992px){
+  html body .wp-theme-mega-menu{top:calc(var(--wp-theme-header-bottom,110px) - 2px)!important;margin-top:0!important}
+  html body .wp-theme-mega-menu::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:-14px!important;height:14px!important;display:block!important;background:transparent!important;pointer-events:auto!important}
+}
+
+/* BBuilder grid safety. Do not force all columns to 100%: preserve the responsive classes emitted by wpbb/column. */
+html body #wp-theme-main .wpbb-row{box-sizing:border-box;display:flex;flex-wrap:wrap;min-width:0}
+html body #wp-theme-main .wpbb-row>.wpbb-column{box-sizing:border-box;min-width:0}
+@media(min-width:768px){
+  html body #wp-theme-main .wpbb-row>.col-md-3{flex:0 0 auto!important;width:25%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-4{flex:0 0 auto!important;width:33.333333%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-5{flex:0 0 auto!important;width:41.666667%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-6{flex:0 0 auto!important;width:50%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-7{flex:0 0 auto!important;width:58.333333%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-8{flex:0 0 auto!important;width:66.666667%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-9{flex:0 0 auto!important;width:75%!important}
+  html body #wp-theme-main .wpbb-row>.col-md-12{flex:0 0 auto!important;width:100%!important}
+}
+@media(min-width:992px){
+  html body #wp-theme-main .wpbb-row>.col-lg-3{flex:0 0 auto!important;width:25%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-4{flex:0 0 auto!important;width:33.333333%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-5{flex:0 0 auto!important;width:41.666667%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-6{flex:0 0 auto!important;width:50%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-7{flex:0 0 auto!important;width:58.333333%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-8{flex:0 0 auto!important;width:66.666667%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-9{flex:0 0 auto!important;width:75%!important}
+  html body #wp-theme-main .wpbb-row>.col-lg-12{flex:0 0 auto!important;width:100%!important}
+}
+@media(min-width:1200px){
+  html body #wp-theme-main .wpbb-row>.col-xl-3{flex:0 0 auto!important;width:25%!important}
+  html body #wp-theme-main .wpbb-row>.col-xl-4{flex:0 0 auto!important;width:33.333333%!important}
+  html body #wp-theme-main .wpbb-row>.col-xl-6{flex:0 0 auto!important;width:50%!important}
+  html body #wp-theme-main .wpbb-row>.col-xl-8{flex:0 0 auto!important;width:66.666667%!important}
+  html body #wp-theme-main .wpbb-row>.col-xl-12{flex:0 0 auto!important;width:100%!important}
+}
+
+/* Hero images stay child-owned, sharp and proportional. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero{position:relative!important;overflow:hidden!important;background:#fff!important}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;opacity:1!important;filter:none!important;backdrop-filter:none!important;background:linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 23%,rgba(255,255,255,.99) 34%,rgba(255,255,255,.94) 43%,rgba(255,255,255,.78) 53%,rgba(255,255,255,.52) 62%,rgba(255,255,255,.27) 70%,rgba(255,255,255,.09) 78%,rgba(255,255,255,0) 86%)!important}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__content{position:relative!important;z-index:2!important}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media{display:block!important;position:absolute!important;z-index:0!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;width:59%!important;height:100%!important;margin:0!important;overflow:hidden!important;background:#eef2f4!important;filter:none!important;transform:none!important}
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;filter:none!important;transform:none!important;image-rendering:auto!important}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination-bullet{cursor:pointer}
+
+/* Latest Thinking: exact shared grid edge and equal media geometry. */
+html body #wp-theme-main .wp-theme-insights-section :is(.wp-theme-blog-preview-container,.wp-theme-blog-preview,.wp-block-query){box-sizing:border-box!important;max-width:var(--suite-v116-content)!important;margin-left:auto!important;margin-right:auto!important}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template>*{min-width:0!important;margin-left:0!important;transform:none!important}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-featured-image,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-featured-image>a,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-featured-image img{display:block!important;width:100%!important;max-width:none!important;margin-left:0!important;transform:none!important}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-featured-image img{aspect-ratio:16/10!important;height:auto!important;object-fit:cover!important}
+
+/* Legal pages use the normal 1320px grid and start from its left edge. */
+html body.wpbb-legal-page #wp-theme-main :is(.wp-theme-essential-hero,.wp-theme-essential-content,.wp-theme-inner-grid)>.container{box-sizing:border-box!important;width:min(calc(100% - (var(--suite-v116-pad) * 2)),var(--suite-v116-content))!important;max-width:var(--suite-v116-content)!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important}
+html body.wpbb-legal-page #wp-theme-main .wp-theme-legal-section,
+html body.wpbb-legal-page #wp-theme-main .wp-theme-legal-section :is(h1,h2,h3,h4,h5,h6,p,ul,ol,blockquote,table){max-width:none!important;margin-left:0!important;margin-right:0!important;text-align:left!important}
+
+/* Quote drawer: no 20px right gutter and a JS fallback can use the same geometry. */
+html body .wp-theme-quote-drawer,
+html body .wp-theme-quote-sidebar{box-sizing:border-box!important;position:fixed!important;top:0!important;right:0!important;bottom:auto!important;left:auto!important;width:min(400px,100vw)!important;max-width:100vw!important;height:100dvh!important;margin:0!important;border-right:0!important;transform:translate3d(105%,0,0)!important}
+html body .wp-theme-quote-drawer.is-open,
+html body .wp-theme-quote-sidebar.is-open{right:0!important;transform:translate3d(0,0,0)!important}
+html body .wp-theme-quote-drawer-backdrop{position:fixed!important;inset:0!important;margin:0!important}
+html body.wp-theme-quote-drawer-open{overflow:hidden!important}
+
+/* Persisted BBuilder consent decision. Only suppress after the visitor accepted. */
+html.wpbb-v116-consent-accepted :is(.wpbb-cookie-consent,.wpbb-cookie-consent-banner,.wpbb-cookie-consent__banner,.wpbb-cookie-banner,[data-wpbb-cookie-consent],[data-wpbb-cookie-banner],[data-cookie-consent-banner],.wp-theme-cookie-banner){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+
+body.wpbb-dark-mode-disabled .wp-theme-theme-toggle,
+body.wpbb-translations-disabled :is(.wp-theme-language-switcher,.pll-parent-menu-item,.lang-item){display:none!important}
+html.wpbb-dark-mode-disabled,html.wpbb-dark-mode-disabled body{color-scheme:light!important}
+
+@media(max-width:767.98px){
+  :root{--suite-v116-pad:18px}
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.86) 34%,rgba(255,255,255,.47) 60%,rgba(255,255,255,.10) 84%,rgba(255,255,255,0) 100%)!important}
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media{width:100%!important;opacity:.78!important}
+  html body .wp-theme-quote-drawer,html body .wp-theme-quote-sidebar{width:100vw!important;max-width:100vw!important;padding-left:20px!important;padding-right:20px!important}
+}

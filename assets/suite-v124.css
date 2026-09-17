@@ -1,0 +1,373 @@
+/* WP BBTheme child suite 3.8.11.24 - final basic visual hardening.
+ * Scope: deterministic card gaps for current + legacy home markup, full-width fun-fact cards,
+ * one compact hero pager, and clearer full-resolution hero presentation.
+ * No global container/.row geometry is changed.
+ */
+:root{
+  --suite-v124-card-gap:32px;
+  --suite-v124-card-gap-tablet:24px;
+  --suite-v124-card-gap-mobile:18px;
+  --suite-v124-stat-gap:22px;
+  --suite-v124-pager-accent:var(--wpbb-v74-accent,var(--suite-v101-accent,var(--sector-primary,#3155d9)));
+}
+
+/* --------------------------------------------------------------------------
+ * Card grids
+ * --------------------------------------------------------------------------
+ * Some installed demo pages pre-date the `wpbb-v62-card-grid` class. Catch both
+ * the current builder class and the named sector rows, but only where the row
+ * actually contains cards. This avoids reintroducing a site-wide Bootstrap row
+ * override while restoring a visible, deterministic gap between cards.
+ */
+html body #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid
+),
+html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+  :is(.row,.wpbb-row):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:var(--suite-v124-card-gap-mobile)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+
+html body #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid
+) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]),
+html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+  :is(.row,.wpbb-row):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card))
+  > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+  align-self:stretch!important;
+}
+
+html body #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid
+) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > *,
+html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+  :is(.row,.wpbb-row):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card))
+  > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > *{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  align-self:stretch!important;
+}
+
+@media(min-width:768px){
+  html body #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid
+  ),
+  html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+    :is(.row,.wpbb-row):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:var(--suite-v124-card-gap-tablet)!important;
+  }
+}
+
+@media(min-width:992px){
+  html body #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid
+  ),
+  html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+    :is(.row,.wpbb-row):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+    gap:var(--suite-v124-card-gap)!important;
+  }
+
+  html body #wp-theme-main :is(.wpbb-v62-card-grid,.wp-theme-sector-services,.wp-theme-sector-industries,.wp-theme-sector-process-grid,.wp-theme-case-grid,.wp-theme-case-studies-grid):has(> :nth-child(2):last-child),
+  html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+    :is(.row,.wpbb-row):has(> :nth-child(2):last-child):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  html body #wp-theme-main :is(.wpbb-v62-card-grid,.wp-theme-sector-services,.wp-theme-sector-industries,.wp-theme-sector-process-grid,.wp-theme-case-grid,.wp-theme-case-studies-grid):has(> :nth-child(3):last-child),
+  html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+    :is(.row,.wpbb-row):has(> :nth-child(3):last-child):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  html body #wp-theme-main :is(.wpbb-v62-card-grid,.wp-theme-sector-services,.wp-theme-sector-industries,.wp-theme-sector-process-grid,.wp-theme-case-grid,.wp-theme-case-studies-grid):has(> :nth-child(4):last-child),
+  html body #wp-theme-main :is(.wp-theme-services-section,.wp-theme-industries-section,.wp-theme-process-section,.wp-theme-case-studies-section)
+    :is(.row,.wpbb-row):has(> :nth-child(4):last-child):has(> :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > :is(.wpbb-icon-card,.wp-theme-sector-card,.wp-theme-process-card,.wp-theme-case-card)){
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Home stats / wpbb-fun-fact
+ * --------------------------------------------------------------------------
+ * The BBuilder fun-fact can contain one or more internal wrappers whose own
+ * intrinsic width survived earlier fixes. Make the row a real grid and stretch
+ * the complete fun-fact subtree through the grid cell.
+ */
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+  :is(.row,.wpbb-row):has(.wpbb-fun-fact),
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+  :is(.row,.wpbb-row):has(.wp-theme-sector-proof__item){
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:var(--suite-v124-stat-gap)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+  :is(.row,.wpbb-row):has(.wpbb-fun-fact) > *,
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+  :is(.row,.wpbb-row):has(.wp-theme-sector-proof__item) > *{
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+  align-self:stretch!important;
+}
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) :is(.wpbb-fun-fact,.wp-theme-sector-proof__item),
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) :is(.wpbb-fun-fact,.wp-theme-sector-proof__item) > *,
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) :is(.wpbb-fun-fact,.wp-theme-sector-proof__item) :is(.card-body,.wpbb-fun-fact__content,.wpbb-fun-fact__inner){
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  align-self:stretch!important;
+}
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-fun-fact{
+  display:flex!important;
+  flex:1 1 100%!important;
+  height:100%!important;
+  min-height:116px!important;
+  margin:0!important;
+}
+html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof) .wpbb-fun-fact :is(.card-body,.wpbb-fun-fact__content,.wpbb-fun-fact__inner){
+  display:flex!important;
+  flex:1 1 auto!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+@media(min-width:992px){
+  html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+    :is(.row,.wpbb-row):has(.wpbb-fun-fact),
+  html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+    :is(.row,.wpbb-row):has(.wp-theme-sector-proof__item){
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:575.98px){
+  html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+    :is(.row,.wpbb-row):has(.wpbb-fun-fact),
+  html body #wp-theme-main :is(.wp-theme-home-stats,.wp-theme-sector-proof)
+    :is(.row,.wpbb-row):has(.wp-theme-sector-proof__item){
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+}
+
+/* Building / sector proof band uses plain BBuilder rows in older imports. */
+html body #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row){
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:var(--suite-v124-card-gap-tablet)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > *{
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+}
+@media(min-width:768px){
+  html body #wp-theme-main .wpbb-sector-proof-band :is(.row,.wpbb-row){
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:var(--suite-v124-card-gap)!important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Hero: keep one compact in-slider pager and expose the real full-res image.
+ * -------------------------------------------------------------------------- */
+html body #wp-theme-main .wpbb-swiper--hero{
+  position:relative!important;
+  overflow:hidden!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media,
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{
+  filter:none!important;
+  transform:none!important;
+  backface-visibility:visible!important;
+  image-rendering:auto!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+}
+
+/* Business/building hero photos are already 2560px; the old white overlay made them
+ * look softer than the file actually is. Keep text contrast on the left but reveal the
+ * photo earlier on desktop. */
+@media(min-width:992px){
+  html body.wpbb-sector-premium-business #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before,
+  html body.wpbb-sector-premium-building #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+    background:linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 24%,rgba(255,255,255,.98) 34%,rgba(255,255,255,.78) 43%,rgba(255,255,255,.34) 52%,rgba(255,255,255,.08) 60%,rgba(255,255,255,0) 68%)!important;
+  }
+}
+
+/* Retire the v123 external strip entirely. v124 JS uses the actual Swiper pagination. */
+html body #wp-theme-main .wpbb-v123-hero-pagination{display:none!important}
+html body #wp-theme-main .wpbb-swiper--hero :is(.swiper-pagination,.wpbb-v120-pagination,.wpbb-v121-pagination,.wpbb-v124-hero-pagination){
+  box-sizing:border-box!important;
+  position:absolute!important;
+  left:50%!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:16px!important;
+  inset-inline-start:50%!important;
+  inset-inline-end:auto!important;
+  z-index:30!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  width:max-content!important;
+  min-width:0!important;
+  max-width:calc(100% - 32px)!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:7px 9px!important;
+  border:1px solid rgba(255,255,255,.62)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.88)!important;
+  box-shadow:0 8px 24px rgba(15,23,42,.12)!important;
+  transform:translateX(-50%)!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  backdrop-filter:blur(6px)!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero :is(.swiper-pagination-bullet,.wpbb-v124-hero-bullet){
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  flex:0 0 auto!important;
+  width:8px!important;
+  height:8px!important;
+  min-width:8px!important;
+  min-height:8px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:color-mix(in srgb,var(--suite-v124-pager-accent) 32%,#fff)!important;
+  box-shadow:none!important;
+  opacity:1!important;
+  cursor:pointer!important;
+  transition:width .18s ease,background-color .18s ease!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero :is(.swiper-pagination-bullet-active,.wpbb-v124-hero-bullet.is-active){
+  width:25px!important;
+  background:var(--suite-v124-pager-accent)!important;
+}
+@media(max-width:767.98px){
+  html body #wp-theme-main .wpbb-swiper--hero :is(.swiper-pagination,.wpbb-v120-pagination,.wpbb-v121-pagination,.wpbb-v124-hero-pagination){
+    bottom:10px!important;
+    padding:6px 8px!important;
+  }
+}
+
+/* Automotive / commerce home catalogue: the block still emits Bootstrap percentage columns.
+ * Use one grid gap source so the 4 x 2 product layout does not visually run together. */
+html body #wp-theme-main .wp-theme-home-product-catalogue > :is(.row,.wpbb-row){
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:20px!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main .wp-theme-home-product-catalogue > :is(.row,.wpbb-row) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+html body #wp-theme-main .wp-theme-home-product-catalogue > :is(.row,.wpbb-row) > :is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]) > *{
+  width:100%!important;
+  max-width:none!important;
+}
+@media(min-width:640px){
+  html body #wp-theme-main .wp-theme-home-product-catalogue > :is(.row,.wpbb-row){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important}
+}
+@media(min-width:1100px){
+  html body #wp-theme-main .wp-theme-home-product-catalogue > :is(.row,.wpbb-row){grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:24px!important}
+}

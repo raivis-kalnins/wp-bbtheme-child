@@ -1,0 +1,101 @@
+/* WP BBTheme child suite 3.8.11.14 - child-only editor, settings, legal, editorial and hero finish. */
+:root{--suite-v114-content:1320px;--suite-v114-pad:24px}
+
+/* Latest Thinking: heading, card grid and CTA share the exact same 1320px content grid.
+   Previous 1440px overrides made the entire three-card row begin 60px left of the heading. */
+html body #wp-theme-main .wp-theme-insights-section > :is(.wpbb-row,.row,.container,.wpbb-v67-section-inner),
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--suite-v114-pad) * 2)),var(--suite-v114-content))!important;
+  max-width:var(--suite-v114-content)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section > :is(.wpbb-row,.row,.container,.wpbb-v67-section-inner){
+  --bs-gutter-x:0!important;--bs-gutter-y:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section > :is(.wpbb-row,.row,.container,.wpbb-v67-section-inner) > :is(.wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;flex:0 0 100%!important;width:100%!important;max-width:none!important;
+  margin:0!important;padding-left:0!important;padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section :is(.wp-block-query,.wp-theme-blog-preview>.wp-block-query){
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{
+  box-sizing:border-box!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:24px!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+  padding-inline-start:0!important;list-style:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template>*{
+  box-sizing:border-box!important;min-width:0!important;width:100%!important;max-width:none!important;
+  margin:0!important;padding-left:0!important;padding-right:0!important;left:auto!important;right:auto!important;
+  inset-inline-start:auto!important;transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card{
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:0!important;left:auto!important;transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image>a,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  box-sizing:border-box!important;display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+  left:auto!important;right:auto!important;transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  aspect-ratio:16/10!important;height:auto!important;object-fit:cover!important;object-position:center!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-actions{
+  box-sizing:border-box!important;display:flex!important;justify-content:center!important;align-items:center!important;
+  width:min(calc(100% - (var(--suite-v114-pad) * 2)),var(--suite-v114-content))!important;max-width:var(--suite-v114-content)!important;
+  margin:34px auto 0!important;padding:0!important;clear:both!important;
+}
+
+/* Hero clarity: direct child-owned source, no CSS blur, no viewport-width stretch. The first
+   gradient layer deliberately covers the photo's left boundary so there is never a hard seam. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+  opacity:1!important;filter:none!important;backdrop-filter:none!important;image-rendering:auto!important;background-color:#fff!important;
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 22%,rgba(255,255,255,.99) 32%,rgba(255,255,255,.94) 42%,rgba(255,255,255,.76) 52%,rgba(255,255,255,.50) 61%,rgba(255,255,255,.27) 69%,rgba(255,255,255,.10) 76%,rgba(255,255,255,0) 84%),
+    var(--suite-v114-hero,var(--suite-v113-hero))!important;
+  background-size:100% 100%,auto 100%!important;background-position:center,right center!important;background-repeat:no-repeat,no-repeat!important;
+}
+/* Do not allow a second blurred media layer from an older hero implementation to show through. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero :is(.wpbb-swiper-slide__media,.wpbb-swiper-slide__image,.wpbb-hero-media){filter:none!important;backdrop-filter:none!important}
+
+/* Legal pages: use the full site grid and start content at the left grid edge, never a centered 1120px column. */
+html body.wpbb-legal-page #wp-theme-main :is(.wp-theme-essential-hero,.wp-theme-inner-hero)>.container,
+html body.wpbb-legal-page #wp-theme-main .wp-theme-essential-content>.container,
+html body.wpbb-legal-page #wp-theme-main .wp-theme-essential-content :is(.wpbb-row.container,.row.container),
+html body.wpbb-legal-page #wp-theme-main .wp-theme-inner-grid>.container{
+  box-sizing:border-box!important;width:min(calc(100% - (var(--suite-v114-pad) * 2)),var(--suite-v114-content))!important;
+  max-width:var(--suite-v114-content)!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important;
+}
+html body.wpbb-legal-page #wp-theme-main .wp-theme-essential-content :is(.wpbb-row,.row){--bs-gutter-x:0!important;margin-left:0!important;margin-right:0!important}
+html body.wpbb-legal-page #wp-theme-main .wp-theme-essential-content :is(.wpbb-column,[class*="col-"],[class*="offset-"]){
+  flex:0 0 100%!important;width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;
+}
+html body.wpbb-legal-page #wp-theme-main .wp-theme-legal-section,
+html body.wpbb-legal-page #wp-theme-main .wp-theme-legal-section :is(h1,h2,h3,h4,p,ul,ol,blockquote,table){
+  width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;text-align:left!important;
+}
+
+/* Theme Settings switches. */
+body.wpbb-dark-mode-disabled .wp-theme-theme-toggle,
+body.wpbb-translations-disabled :is(.wp-theme-language-switcher,.pll-parent-menu-item,.lang-item){display:none!important}
+html.wpbb-dark-mode-disabled,html.wpbb-dark-mode-disabled body{color-scheme:light!important}
+
+@media(max-width:991.98px){
+  :root{--suite-v114-pad:22px}
+  html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:767.98px){
+  :root{--suite-v114-pad:18px}
+  html body #wp-theme-main .wp-theme-insights-section :is(ul,ol).wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:1fr!important}
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+    background-image:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.82) 32%,rgba(255,255,255,.42) 58%,rgba(255,255,255,.10) 80%,rgba(255,255,255,0) 100%),var(--suite-v114-hero,var(--suite-v113-hero))!important;
+    background-size:100% 100%,cover!important;background-position:center,center!important;
+  }
+}

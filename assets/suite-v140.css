@@ -1,0 +1,145 @@
+/* 3.8.11.40 — exact header-grid alignment + placeholder/proof cleanup.
+   The header/footer container is measured in JS and exposed as left/right
+   gutters. Every homepage content section uses those exact gutters. */
+:root{
+  --wpbb-v140-left:max(20px,calc((100vw - 1320px)/2));
+  --wpbb-v140-right:max(20px,calc((100vw - 1320px)/2));
+  --wpbb-v140-gap:24px;
+  --wpbb-v140-section-y:36px;
+}
+
+/* Backgrounds stay full width, content aligns to the header/footer grid. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:var(--wpbb-v140-left)!important;
+  padding-right:var(--wpbb-v140-right)!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section:not(.wp-theme-partners-section):not(.wp-theme-trusted-section):not(.wp-theme-brand-strip){
+  padding-top:var(--wpbb-v140-section-y)!important;
+  padding-bottom:var(--wpbb-v140-section-y)!important;
+}
+
+/* Remove old nested 920/1180/1240/1320/1440 shells inside an owned section. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section :is(
+  .container,.container-fluid,.wpbb-v67-section-inner,.wpbb-v136-process-shell,
+  .wp-block-group__inner-container,.wp-theme-blog-preview-container,
+  .wp-theme-case-studies-section > .container,.wp-theme-gallery-section > .container,
+  .wp-theme-services-section > .container,.wp-theme-industries-section > .container
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section > :is(
+  .container,.container-fluid,.wpbb-v67-section-inner,.wpbb-v136-process-shell,
+  .wp-block-group__inner-container
+){
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Rows and component grids fill the same content edge instead of escaping it. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section :is(
+  .row,.wpbb-row,.wp-theme-sector-services,.wp-theme-sector-industries,
+  .wp-theme-services-grid,.wp-theme-industries-grid,.wp-theme-sector-cards,
+  .wp-theme-card-grid,.wp-theme-feature-grid,.wp-theme-case-grid,
+  .wp-theme-case-studies,.wp-theme-case-studies-grid,.wp-theme-sector-proof,
+  .wp-theme-home-stats,.wp-theme-gallery-grid,.wp-theme-sector-gallery,
+  .wp-theme-blog-preview,.wp-theme-blog-grid,.wp-theme-insights-grid,
+  .wp-theme-home-product-catalogue,.wp-theme-products-grid,
+  .wp-theme-sector-process-grid,.wpbb-v136-process-grid,.wpbb-v136-grid,
+  .wpbb-v136-stats-grid,.wp-theme-sector-media-text,.wp-theme-media-text,
+  .wp-theme-about-media,.wp-block-query
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section :is(.row,.wpbb-row):not(.swiper-wrapper){
+  --bs-gutter-x:0!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Runtime-marked component rows: stable sector grids with real gaps. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-component-grid{
+  display:grid!important;
+  grid-template-columns:repeat(var(--wpbb-v140-cols,3),minmax(0,1fr))!important;
+  gap:var(--wpbb-v140-gap)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-component-grid > *{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+}
+
+/* Placeholder proof cards should read as normal sector cards, never empty bars. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-sector-proof-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:var(--wpbb-v140-gap)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:18px 0 0!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-sector-proof-grid > *{
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-sector-proof-grid :is(.wpbb-icon-card,.wp-theme-sector-card,.wpbb-sector-proof-card,[class*="icon-card"]){
+  height:100%!important;
+  min-height:150px!important;
+  width:100%!important;
+  max-width:none!important;
+  padding:22px!important;
+  border-radius:16px!important;
+}
+
+/* Keep headings/content aligned with the same edge. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section :is(.wp-theme-section-heading,.wpbb-v62-section-heading){
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  margin-top:0!important;
+  margin-bottom:20px!important;
+}
+
+/* Avoid inherited double vertical spacing from old nested section shells. */
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section .wpbb-v140-section{
+  padding-left:0!important;
+  padding-right:0!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+html body.wpbb-v140 #wp-theme-main .wpbb-v140-section + .wpbb-v140-section{
+  margin-top:0!important;
+}
+
+@media(max-width:1199.98px){
+  :root{--wpbb-v140-gap:22px;--wpbb-v140-section-y:32px}
+  html body.wpbb-v140 #wp-theme-main .wpbb-v140-component-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:759px){
+  :root{--wpbb-v140-gap:18px;--wpbb-v140-section-y:26px}
+  html body.wpbb-v140 #wp-theme-main .wpbb-v140-component-grid,
+  html body.wpbb-v140 #wp-theme-main .wpbb-v140-sector-proof-grid{
+    grid-template-columns:1fr!important;
+  }
+}

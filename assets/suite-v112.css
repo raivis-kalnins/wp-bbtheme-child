@@ -1,0 +1,127 @@
+/* WP BBTheme child suite 3.8.11.12 — child-only editorial grid, hero clarity, media recovery and Woo account aliases. */
+:root{--suite-v112-accent:var(--suite-v111-accent,var(--wp-theme-primary,#6f55e8));--suite-v112-hero-position:right center}
+
+/* Latest Thinking / news: the Query block itself was still capped to the old content width.
+   Remove every nested width/gutter so heading, first card, last card and CTA share one grid edge. */
+html body #wp-theme-main .wp-theme-insights-section > .wp-block-query,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container.container,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview > .wp-block-query{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-query .wp-block-post-template,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview .wp-block-post-template,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview ul.wp-block-post-template,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview ol.wp-block-post-template{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:24px!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > *,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > *:first-child,
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template > .wp-block-post,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card:first-child{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image > a,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  box-sizing:border-box!important;
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  height:auto!important;
+  aspect-ratio:16/10!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-actions{
+  clear:both!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:32px 0 0!important;
+  padding:0!important;
+}
+
+/* Hero clarity: stop stretching a 1600px photo across the full viewport.
+   Keep the photo on the right at the hero's own height and let the white/gradient copy area fill the left. */
+html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+  background-color:#fff!important;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.995) 0%,rgba(255,255,255,.97) 28%,rgba(255,255,255,.80) 43%,rgba(255,255,255,.28) 58%,rgba(255,255,255,.04) 72%,rgba(255,255,255,0) 82%),var(--suite-v112-hero,var(--suite-v111-hero,var(--suite-v110-hero)))!important;
+  background-size:100% 100%,auto 100%!important;
+  background-position:center,var(--suite-v112-hero-position)!important;
+  background-repeat:no-repeat,no-repeat!important;
+  filter:none!important;
+  image-rendering:auto!important;
+}
+
+/* Media/text CTA buttons (including E-learning Why Choose Us) stay on the copy edge. */
+html body #wp-theme-main .wp-theme-sector-media-text :is(.wp-theme-buttons,.wp-block-buttons),
+html body #wp-theme-main .wp-theme-about-section .wp-theme-sector-media-text :is(.wp-theme-buttons,.wp-block-buttons){
+  width:100%!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+html body #wp-theme-main .wp-theme-sector-media-text :is(.wpbb-button,.wp-block-button,.btn),
+html body #wp-theme-main .wp-theme-about-section .wp-theme-sector-media-text :is(.wpbb-button,.wp-block-button,.btn){
+  margin-left:0!important;
+  margin-right:auto!important;
+  align-self:flex-start!important;
+}
+
+/* About/detail proof grids should not inherit a stray Bootstrap column gutter. */
+html body #wp-theme-main .wp-theme-about-page-intro :is(.wp-theme-home-stats,.wp-theme-sector-proof,.wpbb-sector-proof-band),
+html body #wp-theme-main .wp-theme-about-section :is(.wp-theme-home-stats,.wp-theme-sector-proof,.wpbb-sector-proof-band){
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+@media(max-width:991.98px){
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-query .wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview .wp-block-post-template{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:767.98px){
+  html body #wp-theme-main .wp-theme-insights-section .wp-block-query .wp-block-post-template,
+  html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview .wp-block-post-template{grid-template-columns:1fr!important}
+  html body.wpbb-sector-premium.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+    background-size:100% 100%,cover!important;
+    background-position:center,center!important;
+  }
+}

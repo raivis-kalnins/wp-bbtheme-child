@@ -1,0 +1,178 @@
+/* WP BBTheme child suite 3.8.11.11 — hero finder, editorial grid, mega-menu and image finish. */
+:root{--suite-v111-accent:var(--suite-v110-accent,var(--wp-theme-primary,#6f55e8));--suite-v111-content:var(--wpbb-content,1320px)}
+
+/* Hero finder: the icon, placeholder/value and action share one vertical centreline. */
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__form{
+  align-items:stretch!important;
+}
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:24px minmax(0,1fr)!important;
+  align-items:center!important;
+  column-gap:8px!important;
+  min-height:66px!important;
+  height:66px!important;
+  padding:0 14px!important;
+}
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field:before{
+  content:""!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  align-self:center!important;
+  justify-self:center!important;
+  width:20px!important;
+  height:20px!important;
+  margin:0!important;
+  padding:0!important;
+  background-color:var(--suite-v111-accent)!important;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center/18px 18px no-repeat!important;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center/18px 18px no-repeat!important;
+  font-size:0!important;
+  line-height:0!important;
+  transform:none!important;
+}
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field:nth-child(2):before{
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+}
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field input{
+  box-sizing:border-box!important;
+  align-self:center!important;
+  width:100%!important;
+  height:64px!important;
+  min-height:64px!important;
+  margin:0!important;
+  padding:0 6px!important;
+  border:0!important;
+  line-height:1.25!important;
+  vertical-align:middle!important;
+}
+html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__submit{
+  align-self:center!important;
+  min-height:50px!important;
+  height:50px!important;
+  margin:8px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1.15!important;
+}
+
+/* Jobs uses its own finder markup; keep its native controls on the same centreline too. */
+html body.wpbb-jobs-theme #wp-theme-main .wpbb-jobs-search.is-compact .wpbb-jobs-search__field{
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  min-height:50px!important;
+}
+html body.wpbb-jobs-theme #wp-theme-main .wpbb-jobs-search.is-compact .wpbb-jobs-search__field :is(input,select){
+  box-sizing:border-box!important;
+  display:block!important;
+  align-self:center!important;
+  height:50px!important;
+  min-height:50px!important;
+  margin:0!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  line-height:1.25!important;
+  vertical-align:middle!important;
+}
+html body.wpbb-jobs-theme #wp-theme-main .wpbb-jobs-search.is-compact .wpbb-jobs-search__submit{
+  display:flex!important;
+  align-items:center!important;
+  align-self:stretch!important;
+}
+html body.wpbb-jobs-theme #wp-theme-main .wpbb-jobs-search.is-compact .wpbb-jobs-search__submit .wpbb-jobs-button{
+  align-self:center!important;
+  min-height:50px!important;
+}
+
+/* Latest thinking: remove the historical nested-container 24px inset. Heading, first card and last card now share the same grid edges. */
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container.container,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:var(--suite-v111-content)!important;
+  margin-right:auto!important;
+  margin-left:auto!important;
+  padding-right:0!important;
+  padding-left:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview .wp-block-post-template{
+  box-sizing:border-box!important;
+  width:100%!important;
+  margin-right:0!important;
+  margin-left:0!important;
+  padding-right:0!important;
+  padding-left:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview .wp-block-post-template > .wp-block-post{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  margin:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image,
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image > a{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-card .wp-block-post-featured-image img{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  aspect-ratio:16/10!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-actions{
+  clear:both!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:var(--suite-v111-content)!important;
+  margin:30px auto 0!important;
+  padding:0!important;
+}
+
+/* A menu item that owns a mega menu must not also paint its legacy one-line dropdown above it. */
+html body .wp-theme-primary-menu > li.wpbb-v111-has-mega > .sub-menu,
+html body .wp-theme-primary-menu > li.menu-item-has-mega > .sub-menu,
+html body .wp-theme-primary-menu > li.menu-item-megamenu > .sub-menu{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* About/media detail: no extra nested left gutter before a stats/proof grid. */
+html body #wp-theme-main .wp-theme-about-page-intro :is(.wp-theme-home-stats,.wp-theme-sector-proof,.wpbb-sector-proof-band),
+html body #wp-theme-main .wp-theme-about-section :is(.wp-theme-home-stats,.wp-theme-sector-proof,.wpbb-sector-proof-band){
+  margin-left:0!important;
+  padding-left:0!important;
+}
+
+/* Business hero: stronger source + less wash over the photographic half. */
+html body.wpbb-sector-premium-business.home #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide--hero:before{
+  background-image:linear-gradient(90deg,rgba(255,255,255,.995) 0%,rgba(255,255,255,.965) 25%,rgba(255,255,255,.72) 41%,rgba(255,255,255,.14) 58%,rgba(255,255,255,0) 69%),var(--suite-v111-hero,var(--suite-v110-hero))!important;
+  background-size:cover,cover!important;
+  background-position:center,center center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  filter:none!important;
+  image-rendering:auto!important;
+}
+
+@media(max-width:991.98px){
+  html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field{height:58px!important;min-height:58px!important}
+  html body.wpbb-sector-premium #wp-theme-main .wpbb-v97-hero-finder__field input{height:56px!important;min-height:56px!important}
+  html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview-container,
+  html body #wp-theme-main .wp-theme-insights-section .wp-theme-blog-preview{padding-right:0!important;padding-left:0!important}
+}

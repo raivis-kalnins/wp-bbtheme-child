@@ -1,0 +1,192 @@
+/* WP BBTheme child suite 3.8.11.21 - scoped BBuilder grid recovery, stable 1440px theme shells and hero pagination without the v119/v120 global geometry regressions. */
+:root{--suite-v121-gutter-x:1.5rem;--suite-v121-gutter-y:1.5rem}
+
+/*
+ * The regression was caused by applying Bootstrap row/container geometry to every .row under
+ * #wp-theme-main. BBuilder's rendered section rows still need flex/grid behaviour, but Woo,
+ * forms and other plugin rows must keep their own layout. Scope the compatibility layer to
+ * BBuilder section shells/inners only. Existing v99/v100/jobs CSS remains authoritative for shell width.
+ */
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row){
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  min-width:0!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  box-sizing:border-box!important;
+  min-width:0!important;
+  max-width:100%;
+}
+
+/* Bootstrap-style gutters only when the BBuilder row explicitly asks for them. */
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-0{--bs-gutter-x:0}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-1{--bs-gutter-x:.25rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-2{--bs-gutter-x:.5rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-3{--bs-gutter-x:1rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-4{--bs-gutter-x:1.5rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gx-5{--bs-gutter-x:3rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-0{--bs-gutter-y:0}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-1{--bs-gutter-y:.25rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-2{--bs-gutter-y:.5rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-3{--bs-gutter-y:1rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-4{--bs-gutter-y:1.5rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row).gy-5{--bs-gutter-y:3rem}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)[class*="gx-"]{
+  width:auto!important;
+  margin-right:calc(-.5 * var(--bs-gutter-x,0))!important;
+  margin-left:calc(-.5 * var(--bs-gutter-x,0))!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)[class*="gx-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){
+  padding-right:calc(.5 * var(--bs-gutter-x,0))!important;
+  padding-left:calc(.5 * var(--bs-gutter-x,0))!important;
+}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)[class*="gy-"]{margin-top:calc(-1 * var(--bs-gutter-y,0))!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)[class*="gy-"]>:is(.wpbb-column,.wp-block-wpbb-column,[class*="col-"]){margin-top:var(--bs-gutter-y,0)!important}
+
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+
+@media(min-width:576px){
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-sm-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+@media(min-width:768px){
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-md-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+@media(min-width:992px){
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-lg-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+@media(min-width:1200px){
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xl-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+@media(min-width:1400px){
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-1{flex:0 0 8.333333%!important;width:8.333333%!important;max-width:8.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-2{flex:0 0 16.666667%!important;width:16.666667%!important;max-width:16.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-3{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-4{flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-5{flex:0 0 41.666667%!important;width:41.666667%!important;max-width:41.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-6{flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-7{flex:0 0 58.333333%!important;width:58.333333%!important;max-width:58.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-8{flex:0 0 66.666667%!important;width:66.666667%!important;max-width:66.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-9{flex:0 0 75%!important;width:75%!important;max-width:75%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-10{flex:0 0 83.333333%!important;width:83.333333%!important;max-width:83.333333%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-11{flex:0 0 91.666667%!important;width:91.666667%!important;max-width:91.666667%!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) :is(.row,.wpbb-row)>.col-xxl-12{flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+/* Fallbacks for old/reset BBuilder markup where responsive classes were omitted. */
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid{display:flex!important;flex-wrap:wrap!important;width:auto!important}
+@media(min-width:768px) and (max-width:991.98px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-md-"]){flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+}
+@media(min-width:992px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(2)):not(:has(>:nth-child(3)))>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-lg-"]){flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(3)):not(:has(>:nth-child(4)))>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-lg-"]){flex:0 0 33.333333%!important;width:33.333333%!important;max-width:33.333333%!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid:has(>:nth-child(4)):not(:has(>:nth-child(5)))>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-lg-"]){flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wp-theme-sector-media-text>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-lg-"]){flex:0 0 50%!important;width:50%!important;max-width:50%!important}
+  html body #wp-theme-main .wp-theme-home-stats .wpbb-v67-section-inner :is(.row,.wpbb-row)>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-lg-"]){flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+}
+@media(max-width:767.98px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wpbb-v62-card-grid>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-"]){flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wp-theme-sector-media-text>:is(.wpbb-column,.wp-block-wpbb-column):not([class*="col-"]){flex:0 0 100%!important;width:100%!important;max-width:100%!important}
+}
+
+/* BBuilder catalogue uses a plain .row. Restore its 1/2/3/4-up responsive grid without touching WooCommerce archive rows. */
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wp-theme-home-product-catalogue>.row{display:flex!important;flex-wrap:wrap!important;align-items:stretch!important;margin-right:-12px!important;margin-left:-12px!important}
+html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wp-theme-home-product-catalogue>.row>:is(.col-12,.col-md-6.col-lg-4){box-sizing:border-box!important;padding-right:12px!important;padding-left:12px!important;margin-bottom:24px!important}
+@media(min-width:1200px){
+  html body #wp-theme-main :is(.wpbb-v67-section-inner,.wp-theme-section-shell) .wp-theme-home-product-catalogue>.row>.col-md-6.col-lg-4{flex:0 0 25%!important;width:25%!important;max-width:25%!important}
+}
+
+/* The editorial query grid is kept scoped to its own section; no first-card spanning or row geometry leaks. */
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;list-style:none!important}
+html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template>*{box-sizing:border-box!important;min-width:0!important;width:100%!important;margin:0!important;transform:none!important}
+@media(max-width:991.98px){html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:767.98px){html body #wp-theme-main .wp-theme-insights-section .wp-block-post-template{grid-template-columns:1fr!important}}
+
+/* Hero pagination remains deterministic, but no v121 rule changes section/container widths. */
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination,
+html body #wp-theme-main .wpbb-v121-pagination{
+  box-sizing:border-box!important;
+  position:relative!important;
+  inset:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  width:100%!important;
+  min-height:18px!important;
+  margin:14px auto 0!important;
+  padding:0!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  z-index:6!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination-bullet,
+html body #wp-theme-main .wpbb-v121-pagination .swiper-pagination-bullet{
+  box-sizing:border-box!important;display:block!important;flex:0 0 auto!important;width:8px!important;height:8px!important;min-width:8px!important;min-height:8px!important;margin:0!important;padding:0!important;border:0!important;border-radius:999px!important;opacity:.45!important;cursor:pointer!important;transition:width .22s ease,opacity .22s ease!important
+}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination-bullet-active,
+html body #wp-theme-main .wpbb-v121-pagination .swiper-pagination-bullet-active{width:24px!important;opacity:1!important}
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{image-rendering:auto!important;filter:none!important;backface-visibility:hidden}
+@media(max-width:767.98px){html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination,html body #wp-theme-main .wpbb-v121-pagination{margin-top:10px!important}}

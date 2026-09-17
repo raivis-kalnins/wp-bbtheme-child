@@ -1,0 +1,187 @@
+/* 3.8.11.41 — targeted grid repair + server-backed sector proof cards.
+   v140's generic row conversion is intentionally removed: only known card grids
+   and the sector proof row are promoted to CSS Grid. */
+:root{
+  --wpbb-v141-left:max(32px,calc((100vw - 1440px)/2));
+  --wpbb-v141-right:max(32px,calc((100vw - 1440px)/2));
+  --wpbb-v141-gap:24px;
+}
+
+/* Keep every normal homepage section on the exact header/footer content edge. */
+html body.wpbb-v141 #wp-theme-main :is(
+  .wpbb-v67-section-shell,
+  .wp-theme-section-shell,
+  .wpbb-v136-align-section,
+  .wp-theme-case-studies-section,
+  .wp-theme-gallery-section,
+  .wp-theme-process-section,
+  .wp-theme-faq-section,
+  .wp-theme-blog-preview-section,
+  .wpbb-sector-proof-band
+):not(.wpbb-v136-hero-shell):not(.wp-theme-sector-hero){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:var(--wpbb-v141-left)!important;
+  padding-right:var(--wpbb-v141-right)!important;
+}
+
+/* A section can carry more than one historical shell class; never double-pad a nested shell. */
+html body.wpbb-v141 #wp-theme-main :is(.wpbb-v67-section-shell,.wp-theme-section-shell,.wpbb-v136-align-section):not(.wpbb-v136-hero-shell)
+  :is(.wpbb-v67-section-shell,.wp-theme-section-shell,.wpbb-v136-align-section):not(.wpbb-v136-hero-shell){
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Old 920/1180/1240/1320 inner caps no longer create a second grid inside the section. */
+html body.wpbb-v141 #wp-theme-main :is(
+  .wpbb-v67-section-shell,
+  .wp-theme-section-shell,
+  .wpbb-v136-align-section,
+  .wp-theme-case-studies-section,
+  .wp-theme-gallery-section,
+  .wp-theme-process-section,
+  .wp-theme-faq-section,
+  .wp-theme-blog-preview-section,
+  .wpbb-sector-proof-band
+):not(.wpbb-v136-hero-shell) > :is(
+  .container,.container-fluid,.wpbb-v67-section-inner,.wpbb-v136-process-shell,.wp-block-group__inner-container,.wp-theme-blog-preview-container
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+html body.wpbb-v141 #wp-theme-main :is(.wpbb-v67-section-inner,.wpbb-v136-process-shell,.wp-theme-blog-preview-container) > :is(.row,.wpbb-row):not(.swiper-wrapper){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Known card rows only. Never turn generic media, form, gallery or header rows into grids. */
+html body.wpbb-v141 #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid,
+  .wpbb-v141-sector-proof-grid
+){
+  --bs-gutter-x:0!important;
+  --bs-gutter-y:0!important;
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:18px!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+
+html body.wpbb-v141 #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid,
+  .wpbb-v141-sector-proof-grid
+) > *{
+  box-sizing:border-box!important;
+  display:flex!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  flex:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-items:stretch!important;
+}
+
+html body.wpbb-v141 #wp-theme-main :is(
+  .wpbb-v62-card-grid,
+  .wp-theme-sector-services,
+  .wp-theme-sector-industries,
+  .wp-theme-sector-process-grid,
+  .wp-theme-case-grid,
+  .wp-theme-case-studies-grid,
+  .wpbb-v141-sector-proof-grid
+) > * > *{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+}
+
+html body.wpbb-v141 #wp-theme-main .wpbb-v141-sector-proof-card{
+  height:100%!important;
+  min-height:160px!important;
+}
+
+@media(min-width:760px){
+  html body.wpbb-v141 #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid,
+    .wpbb-v141-sector-proof-grid
+  ){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:22px!important;
+  }
+}
+
+@media(min-width:1040px){
+  html body.wpbb-v141 #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid
+  ):has(> :nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  html body.wpbb-v141 #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid
+  ):has(> :nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+
+  html body.wpbb-v141 #wp-theme-main :is(
+    .wpbb-v62-card-grid,
+    .wp-theme-sector-services,
+    .wp-theme-sector-industries,
+    .wp-theme-sector-process-grid,
+    .wp-theme-case-grid,
+    .wp-theme-case-studies-grid
+  ):has(> :nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+
+  html body.wpbb-v141 #wp-theme-main .wpbb-v141-sector-proof-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:var(--wpbb-v141-gap)!important;
+  }
+}
+
+@media(max-width:1199.98px){
+  :root{--wpbb-v141-left:24px;--wpbb-v141-right:24px;--wpbb-v141-gap:22px}
+}
+@media(max-width:759px){
+  :root{--wpbb-v141-left:16px;--wpbb-v141-right:16px;--wpbb-v141-gap:18px}
+}

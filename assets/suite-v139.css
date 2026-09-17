@@ -1,0 +1,202 @@
+/* 3.8.11.39 — one canonical header-to-footer grid + cleaner hero media.
+   Section backgrounds remain full bleed. Every section's actual content uses
+   the same 1440px / 32px shell as the header and footer. */
+:root{
+  --wpbb-v139-shell:1440px;
+  --wpbb-v139-pad:32px;
+  --wpbb-v139-section-y:38px;
+  --wpbb-v139-gap:24px;
+}
+html body.wpbb-v139{
+  --wpbb-v136-shell:var(--wpbb-v139-shell);
+  --wpbb-v137-shell:var(--wpbb-v139-shell);
+  --wpbb-v137-pad:var(--wpbb-v139-pad);
+  --wpbb-v138-content:var(--wpbb-v139-shell);
+  --wpbb-v138-pad:var(--wpbb-v139-pad);
+  --wpbb-v138-section-y:var(--wpbb-v139-section-y);
+}
+
+/* Header, utility, newsletter and footer define the canonical left/right edge. */
+html body.wpbb-v139 :is(.wp-theme-utility-bar,.wp-theme-header-main,.wp-theme-header-search-panel) > .container,
+html body.wpbb-v139 .wp-theme-footer-newsletter-band > .container,
+html body.wpbb-v139 .wp-theme-site-footer .container{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v139-pad) * 2)),var(--wpbb-v139-shell))!important;
+  max-width:var(--wpbb-v139-shell)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Full-bleed section backgrounds. Never let an old release make the section
+   itself the content container. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell),
+html body.wpbb-v139 #wp-theme-main :is(.wpbb-v67-section-shell,.wp-theme-section-shell):not(.wpbb-v136-hero-shell){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Canonical content shell — catches both normal v67 markup and the special
+   proof/blog/process wrappers that earlier passes allowed to escape. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v67-section-shell .wpbb-v67-section-inner,
+html body.wpbb-v139 #wp-theme-main .wp-theme-section-shell .wpbb-v67-section-inner,
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) > .container,
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) > .wp-block-group__inner-container,
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-process-shell,
+html body.wpbb-v139 #wp-theme-main :is(.wp-theme-blog-preview-container,.wp-theme-case-studies-section > .container,.wp-theme-gallery-section > .container,.wp-theme-services-section > .container,.wp-theme-industries-section > .container){
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v139-pad) * 2)),var(--wpbb-v139-shell))!important;
+  max-width:var(--wpbb-v139-shell)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Any direct row used as a section's content shell gets the exact same edge. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) > :is(.row,.wpbb-row).container{
+  box-sizing:border-box!important;
+  width:min(calc(100% - (var(--wpbb-v139-pad) * 2)),var(--wpbb-v139-shell))!important;
+  max-width:var(--wpbb-v139-shell)!important;
+  margin-inline:auto!important;
+}
+
+/* Once inside the canonical shell, rows/grids fill it — no more 920/1180/1240
+   caps and no viewport-wide rows escaping their heading. */
+html body.wpbb-v139 #wp-theme-main :is(.wpbb-v67-section-inner,.wpbb-v136-process-shell,.wp-theme-blog-preview-container) :is(
+  .wp-theme-section-heading,
+  .wp-theme-sector-services,.wp-theme-sector-industries,
+  .wp-theme-services-grid,.wp-theme-industries-grid,
+  .wp-theme-sector-cards,.wp-theme-card-grid,.wp-theme-feature-grid,
+  .wp-theme-case-grid,.wp-theme-case-studies,.wp-theme-case-studies-grid,
+  .wp-theme-sector-proof,.wp-theme-home-stats,
+  .wp-theme-gallery-grid,.wp-theme-sector-gallery,
+  .wp-theme-blog-preview,.wp-theme-blog-grid,.wp-theme-insights-grid,
+  .wp-theme-home-product-catalogue,.wp-theme-products-grid,
+  .wp-theme-sector-process-grid,.wpbb-v136-process-grid,
+  .wpbb-v136-grid,.wpbb-v136-stats-grid,
+  .wp-theme-sector-media-text,.wp-theme-media-text,.wp-theme-about-media,
+  .wp-block-query
+){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v67-section-inner > :is(.row,.wpbb-row):not(.swiper-wrapper),
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-process-shell > :is(.row,.wpbb-row):not(.swiper-wrapper){
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Consistent section rhythm, but nested shells do not double it. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:var(--wpbb-v139-section-y)!important;
+  padding-bottom:var(--wpbb-v139-section-y)!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-align-section:not(.wpbb-v136-hero-shell) .wpbb-v136-align-section:not(.wpbb-v136-hero-shell){
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+html body.wpbb-v139 #wp-theme-main :is(.wp-theme-section-heading,.wpbb-v62-section-heading){
+  margin-top:0!important;
+  margin-bottom:20px!important;
+}
+html body.wpbb-v139 #wp-theme-main :is(.wpbb-v136-grid,.wpbb-v136-process-grid){gap:var(--wpbb-v139-gap)!important}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-stats-grid{gap:18px!important}
+html body.wpbb-v139 #wp-theme-main :is(.wp-theme-sector-media-text,.wp-theme-media-text,.wp-theme-about-media){column-gap:40px!important;row-gap:26px!important}
+html body.wpbb-v139 #wp-theme-main :is(.wp-theme-partners-section,.wp-theme-trusted-section,.wp-theme-logo-section,.wp-theme-brand-strip,.wp-theme-sector-partners).wpbb-v136-align-section{
+  padding-top:24px!important;
+  padding-bottom:24px!important;
+}
+
+/* Hero stays genuinely full bleed while the text starts on the exact same
+   1440px grid as every section below. The fade is intentionally short so the
+   full-resolution image stays crisp and visible. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero-shell{
+  left:50%!important;
+  width:100vw!important;
+  max-width:none!important;
+  margin-left:-50vw!important;
+  margin-right:-50vw!important;
+  padding:0!important;
+  border-radius:0!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero{
+  width:100%!important;
+  max-width:none!important;
+  border-radius:0!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){
+  width:min(46%,650px)!important;
+  max-width:650px!important;
+  padding-left:max(var(--wpbb-v139-pad),calc((100vw - var(--wpbb-v139-shell))/2))!important;
+  padding-right:28px!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){
+  width:70%!important;
+  background:#eef2f5!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media)::after{
+  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 6%,rgba(255,255,255,.66) 13%,rgba(255,255,255,.30) 20%,rgba(255,255,255,.08) 26%,rgba(255,255,255,0) 31%)!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media) img,
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero .wpbb-v136-hero-image{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  opacity:1!important;
+  filter:contrast(1.045) saturate(1.035) brightness(1.005)!important;
+  image-rendering:auto!important;
+}
+
+/* Process/delivery model is one clean 3/2/1 grid and shares the same left edge. */
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-process-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:var(--wpbb-v139-gap)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:22px 0 0!important;
+  padding:0!important;
+}
+html body.wpbb-v139 #wp-theme-main .wpbb-v136-process-card{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:154px!important;
+  height:100%!important;
+  margin:0!important;
+  padding:22px!important;
+  border-radius:16px!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  transform:none!important;
+}
+@media(min-width:760px){
+  html body.wpbb-v139 #wp-theme-main .wpbb-v136-process-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+
+@media(max-width:1199.98px){
+  :root{--wpbb-v139-pad:24px;--wpbb-v139-section-y:34px;--wpbb-v139-gap:22px}
+}
+@media(max-width:759px){
+  :root{--wpbb-v139-pad:16px;--wpbb-v139-section-y:28px;--wpbb-v139-gap:18px}
+  html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__content,.wp-theme-hero__content,.wpbb-hero-content){
+    width:100%!important;max-width:none!important;padding-left:20px!important;padding-right:20px!important;
+  }
+  html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media){width:100%!important}
+  html body.wpbb-v139 #wp-theme-main .wpbb-v136-hero :is(.wpbb-swiper-slide__media,.wp-theme-hero__media,.wpbb-hero-media)::after{display:none!important}
+}

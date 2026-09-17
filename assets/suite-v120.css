@@ -1,0 +1,86 @@
+/* WP BBTheme child suite 3.8.11.20 - stable v118 geometry plus narrow regression hardening. */
+:root{--suite-v120-content:1320px;--suite-v120-pad:24px}
+
+/* Keep full-width section backgrounds while restoring the inner Bootstrap/BBuilder container padding
+   that v119 removed. This is intentionally narrower than the v119 site-wide row rewrite. */
+html body #wp-theme-main .wpbb-v67-section-shell>.wpbb-v67-section-inner.container,
+html body #wp-theme-main .wp-theme-section-shell>.container{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:var(--suite-v120-content)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:var(--suite-v120-pad)!important;
+  padding-right:var(--suite-v120-pad)!important;
+}
+
+/* Four-up fact/stat bands must not wrap 3 + 1 because of a leaked horizontal gap. */
+html body #wp-theme-main .wp-theme-home-stats :is(.wpbb-row,.row){column-gap:0!important}
+@media(min-width:992px){
+  html body #wp-theme-main .wp-theme-home-stats :is(.wpbb-row,.row)>:is(.col-lg-3,.wpbb-column.col-lg-3,.wp-block-wpbb-column.col-lg-3){
+    flex:0 0 25%!important;
+    width:25%!important;
+    max-width:25%!important;
+  }
+}
+@media(max-width:991.98px){
+  html body #wp-theme-main .wp-theme-home-stats :is(.wpbb-row,.row)>:is(.col-6,.wpbb-column.col-6,.wp-block-wpbb-column.col-6){
+    flex:0 0 50%!important;
+    width:50%!important;
+    max-width:50%!important;
+  }
+}
+
+/* Hero pagination is below the hero by design. v120 JS creates a deterministic fallback when the
+   Swiper block was rendered without bullets, so pagination is visible after reset/import as well. */
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination,
+html body #wp-theme-main .wpbb-v120-pagination{
+  box-sizing:border-box!important;
+  position:relative!important;
+  inset:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  width:100%!important;
+  min-height:18px!important;
+  margin:14px auto 0!important;
+  padding:0!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  z-index:6!important;
+  transform:none!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination-bullet,
+html body #wp-theme-main .wpbb-v120-pagination .swiper-pagination-bullet{
+  box-sizing:border-box!important;
+  display:block!important;
+  flex:0 0 auto!important;
+  width:8px!important;
+  height:8px!important;
+  min-width:8px!important;
+  min-height:8px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:999px!important;
+  opacity:.45!important;
+  cursor:pointer!important;
+  transition:width .22s ease,opacity .22s ease!important;
+}
+html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination-bullet-active,
+html body #wp-theme-main .wpbb-v120-pagination .swiper-pagination-bullet-active{width:24px!important;opacity:1!important}
+
+/* Keep direct 2560px child-owned hero images on the GPU without filter/scale softening. */
+html body #wp-theme-main .wpbb-swiper--hero .wpbb-swiper-slide__media img{
+  image-rendering:auto!important;
+  filter:none!important;
+  backface-visibility:hidden;
+}
+
+@media(max-width:767.98px){
+  :root{--suite-v120-pad:18px}
+  html body #wp-theme-main .wpbb-swiper--hero .swiper-pagination,
+html body #wp-theme-main .wpbb-v120-pagination{margin-top:10px!important}
+}

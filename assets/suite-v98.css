@@ -1,0 +1,45 @@
+/* 3.8.10.98 shared sector finishing layer: wide grids, legal/article widths, contact sizing and mobile nav. */
+:root{--suite-v98-shell:1440px;--suite-v98-pad:28px}
+body #wp-theme-main :is(.container,.wp-theme-inner-hero>.container,.wp-theme-blog-hero>.container,.wp-theme-blog-browser>.container,.wp-theme-article-head>.container,.wp-theme-article-body>.container,.wp-theme-related-posts>.container,.wp-theme-essential-content>.container){max-width:var(--suite-v98-shell)!important}
+body #wp-theme-main :is(.wp-theme-legal-section,.wp-theme-essential-content,.wp-theme-article-content,.entry-content>.wp-block-group.is-layout-constrained){width:100%!important;max-width:none!important}
+body #wp-theme-main :is(.wp-theme-article-body,.wp-theme-essential-content)>.container{width:min(calc(100% - (var(--suite-v98-pad)*2)),var(--suite-v98-shell))!important;margin-inline:auto!important}
+body #wp-theme-main .wp-theme-article-body :is(.wp-post-image,.wp-block-image,img){max-width:100%!important}
+body #wp-theme-main .wp-theme-article-body .wp-theme-article-content{max-width:1180px!important;margin-inline:auto!important}
+body #wp-theme-main .wp-theme-legal-section{max-width:1280px!important;margin-inline:auto!important}
+body #wp-theme-main .wp-theme-contact-form,
+body #wp-theme-main .wp-theme-contact-form .wpbb-dynamic-form-wrap,
+body #wp-theme-main .wpbb-contact-form,
+body #wp-theme-main .wpbb-contact-form .wpbb-dynamic-form-wrap{width:100%!important;max-width:980px!important;margin-inline:auto!important}
+body #wp-theme-main :is(.wp-theme-contact-form,.wpbb-contact-form) :is(input:not([type=checkbox]):not([type=radio]),select,textarea){width:100%!important;min-height:48px!important;border-radius:10px!important}
+body #wp-theme-main :is(.wp-theme-contact-form,.wpbb-contact-form) textarea{min-height:150px!important}
+body #wp-theme-main :is(.wp-theme-contact-card,.wpbb-icon-card){height:100%!important}
+body :is(.wp-theme-primary-menu,.wp-theme-top-menu) .wpbb-jobs-v97-submenu-toggle,
+body :is(.wp-theme-primary-menu,.wp-theme-top-menu) .wpbb-suite-v98-submenu-toggle{display:none!important}
+body .wp-theme-utility-bar :is(a,.wp-theme-utility-note){color:#fff!important;opacity:1!important}
+body #wp-theme-main :is(.wp-theme-home-cta,.wp-theme-article-next-step,.wpbb-home-cta){color:#fff!important}
+body #wp-theme-main :is(.wp-theme-home-cta,.wp-theme-article-next-step,.wpbb-home-cta) :is(h1,h2,h3,h4,strong){color:#fff!important}
+@media(max-width:1199.98px){
+  :root{--suite-v98-pad:18px}
+  body .wp-theme-menu-toggle{display:inline-flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:10050!important}
+  body .wp-theme-primary-navigation{position:fixed!important;top:var(--suite-v98-nav-top,72px)!important;right:0!important;bottom:0!important;left:auto!important;width:min(430px,100vw)!important;max-width:100vw!important;height:auto!important;padding:14px 18px 28px!important;background:#fff!important;border-left:1px solid rgba(15,23,42,.12)!important;box-shadow:-20px 0 50px rgba(15,23,42,.18)!important;overflow-y:auto!important;transform:translateX(104%)!important;transition:transform .22s ease!important;visibility:visible!important;opacity:1!important;z-index:10040!important}
+  body.wpbb-suite-v98-menu-open .wp-theme-primary-navigation{transform:translateX(0)!important}
+  body.wpbb-suite-v98-menu-open{overflow:hidden!important}
+  body .wp-theme-primary-menu{display:block!important;width:100%!important;margin:0!important;padding:0!important}
+  body .wp-theme-primary-menu>li{display:grid!important;grid-template-columns:minmax(0,1fr) 46px!important;position:relative!important;width:100%!important;border-bottom:1px solid rgba(15,23,42,.10)!important}
+  body .wp-theme-primary-menu>li>a{grid-column:1!important;display:flex!important;align-items:center!important;min-height:56px!important;padding:0 8px!important;color:#14243b!important;font-weight:750!important}
+  body .wp-theme-primary-menu .wpbb-suite-v98-submenu-toggle{display:grid!important;grid-column:2!important;place-items:center!important;width:40px!important;height:40px!important;margin:auto!important;border:1px solid rgba(15,23,42,.14)!important;border-radius:10px!important;background:#f8fafc!important;color:#14243b!important}
+  body .wp-theme-primary-menu .wpbb-suite-v98-submenu-toggle:before{content:'+';font-size:20px;line-height:1}
+  body .wp-theme-primary-menu li.is-submenu-open>.wpbb-suite-v98-submenu-toggle:before{content:'−'}
+  body .wp-theme-primary-menu :is(.sub-menu,.wp-theme-mega-menu){display:none!important;grid-column:1/-1!important;position:static!important;inset:auto!important;transform:none!important;width:100%!important;max-width:100%!important;margin:0!important;padding:0 0 14px 14px!important;background:transparent!important;border:0!important;border-left:2px solid rgba(15,23,42,.10)!important;border-radius:0!important;box-shadow:none!important;visibility:visible!important;opacity:1!important}
+  body .wp-theme-primary-menu li.is-submenu-open>:is(.sub-menu,.wp-theme-mega-menu){display:block!important}
+  body .wp-theme-primary-menu .sub-menu li{display:block!important;width:100%!important}
+  body .wp-theme-primary-menu .sub-menu a{display:flex!important;align-items:center!important;min-height:44px!important;padding:7px 12px!important;color:#40536a!important}
+  body .wp-theme-mega-menu :is(.container,.container-fluid,.row,.wpbb-row,[class*='col-'],.wpbb-column){display:block!important;width:100%!important;max-width:100%!important;margin:0!important;padding-left:0!important;padding-right:0!important}
+  body .wp-theme-mega-menu .wp-theme-mega-link-card{padding:10px 12px!important;margin:0 0 8px!important;border:1px solid rgba(15,23,42,.10)!important;border-radius:12px!important;background:#f8fafc!important}
+  body .wp-theme-header-overlay{z-index:10030!important}
+}
+@media(max-width:767.98px){:root{--suite-v98-pad:14px}body .wp-theme-primary-navigation{width:100%!important;padding:10px 14px 26px!important}}
+html:is(.is-dark-theme,[data-theme='dark']) body .wp-theme-primary-navigation{background:#0a1518!important;border-color:#2a3c43!important}
+html:is(.is-dark-theme,[data-theme='dark']) body .wp-theme-primary-menu>li{border-color:#2a3c43!important}
+html:is(.is-dark-theme,[data-theme='dark']) body .wp-theme-primary-menu>li>a{color:#f2f7f8!important}
+html:is(.is-dark-theme,[data-theme='dark']) body .wp-theme-primary-menu .wpbb-suite-v98-submenu-toggle{background:#13242a!important;border-color:#2a3c43!important;color:#fff!important}
